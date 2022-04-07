@@ -25,5 +25,6 @@ public class TpTransactionnelSpringApplication implements CommandLineRunner {
 
         Long book1id = serviceLibrary.saveBook("Les parapluies sont disparus", "Phil", "mouse",2004, 2, "manuel Scolaire");
         Long book2id = serviceLibrary.saveBook("Les parapluies sont presque Disparue", "Phil", "mouse",2004, 6, "manuel Scolaire");
+        System.out.println(serviceLibrary.getBook(book1id));
     }
 }

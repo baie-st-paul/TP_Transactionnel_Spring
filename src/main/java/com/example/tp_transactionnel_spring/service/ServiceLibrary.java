@@ -19,7 +19,9 @@ public class ServiceLibrary {
         return book.getId();
     }
 
-
+    public Book getBook(long bookid) {
+        return bookRepository.getById(bookid);
+    }
 
     private LocalDate getDateFromLocalDate(int year, int month, int day) {
         return LocalDate.of(year, month, day);
