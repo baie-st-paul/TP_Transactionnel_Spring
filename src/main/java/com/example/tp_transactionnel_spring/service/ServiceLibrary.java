@@ -68,4 +68,9 @@ public class ServiceLibrary {
         return client.getId();
 
     }
+
+    public Client getClient(long clientId) {
+        return clientRepository.getClientById(clientId);
+
+    }
 }
