@@ -81,6 +81,7 @@ public class ServiceLibrary {
             Book book = getBook(bookId);
             if(client.getTotalFees() > 0)throw new Exception("Client has fees");
             if(book.isLoaned())throw new Exception("Book is already loaned");
+            setBookIsLoaned(true, book);
             Loan loan = loanRepository.save( new Loan(book, client));
             return loan.getId();
         }
@@ -96,6 +97,7 @@ public class ServiceLibrary {
             Cd cd = getCd(cdid);
             if(client.getTotalFees() > 0)throw new Exception("Client has fees");
             if(cd.isLoaned())throw new Exception("Cd is already loaned");
+            setCdIsLoaned(true, cd);
             Loan loan = loanRepository.save( new Loan(cd, client));
             return loan.getId();
         }
@@ -111,6 +113,7 @@ public class ServiceLibrary {
             Dvd dvd = getDvd(dvdid);
             if(client.getTotalFees() > 0)throw new Exception("Client has fees");
             if(dvd.isLoaned())throw new Exception("Dvd is already loaned");
+            setDvdIsLoaned(true, dvd);
             Loan loan = loanRepository.save( new Loan(dvd, client));
             return loan.getId();
         }
@@ -119,4 +122,21 @@ public class ServiceLibrary {
             return 0;
         }
     }
+
+    private void setBookIsLoaned(boolean bookIsLoaned, Book book){
+        book.setLoaned(bookIsLoaned);
+        bookRepository.save(book);
+
+    }
+
+    private void setCdIsLoaned(boolean cdIsLoaned, Cd cd){
+        cd.setLoaned(cdIsLoaned);
+        cdRepository.save(cd);
+    }
+    private void setDvdIsLoaned(boolean dvdIsLoaned, Dvd dvd){
+        dvd.setLoaned(dvdIsLoaned);
+        dvdRepository.save(dvd);
+    }
+
+
 }
