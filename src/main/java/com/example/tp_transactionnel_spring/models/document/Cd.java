@@ -7,6 +7,7 @@ import lombok.ToString;
 
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
+import java.time.LocalDate;
 import java.util.Date;
 
 
@@ -21,7 +22,7 @@ public class Cd extends Document{
 
     private int nbScenes;
 
-    public Cd( String title, String author, String editor, Date publicationYear, int nbScenes, String genre) {
+    public Cd(String title, String author, String editor, LocalDate publicationYear, int nbScenes, String genre) {
         super( title, author, editor, publicationYear, genre);
         this.nbScenes = nbScenes;
     }

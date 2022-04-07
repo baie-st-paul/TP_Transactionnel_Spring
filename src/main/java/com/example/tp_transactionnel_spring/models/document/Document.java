@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -20,14 +21,14 @@ public abstract class Document {
     private String title;
     private String author;
     private String editor;
-    private Date publicationYear;
+    private LocalDate publicationYear;
     private String genre;
     private int nb_copies;
     private boolean isLoaned;
 
 
 
-    public Document( String title, String author, String editor, Date publicationYear, String genre) {
+    public Document(String title, String author, String editor, LocalDate publicationYear, String genre) {
         this.title = title;
         this.author = author;
         this.editor = editor;

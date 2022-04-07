@@ -7,6 +7,7 @@ import lombok.ToString;
 
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
+import java.time.LocalDate;
 import java.util.Date;
 
 @EqualsAndHashCode(callSuper = true)
@@ -20,7 +21,7 @@ public class Book extends Document{
     private int nbPages;
 
 
-    public Book(String title, String author, String editor, Date publicationYear, int nbPages, String genre) {
+    public Book(String title, String author, String editor, LocalDate publicationYear, int nbPages, String genre) {
         super(title, author, editor, publicationYear, genre);
         this.nbPages = nbPages;
     }

@@ -28,7 +28,7 @@ public class Client {
     private String postalCode;
 
 
-    @OneToMany(fetch = FetchType.EAGER,mappedBy = "client")
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "client")
     private List<Loan> loanList = new ArrayList<>();
 
 
