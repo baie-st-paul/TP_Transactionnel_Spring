@@ -2,8 +2,10 @@ package com.example.tp_transactionnel_spring.service;
 
 import com.example.tp_transactionnel_spring.models.document.Book;
 import com.example.tp_transactionnel_spring.models.document.Cd;
+import com.example.tp_transactionnel_spring.models.document.Dvd;
 import com.example.tp_transactionnel_spring.repository.BookRepository;
 import com.example.tp_transactionnel_spring.repository.CdRepository;
+import com.example.tp_transactionnel_spring.repository.DvdRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -18,6 +20,9 @@ public class ServiceLibrary {
 
     @Autowired
     private CdRepository cdRepository;
+
+    @Autowired
+    private DvdRepository dvdRepository;
 
     public Long saveBook(String title, String author, String editor, int year, int nbPages, String genre ) {
         Book book = bookRepository.save(new Book(title,author,editor,getDateFromLocalDate(year,1,1),nbPages,genre));
@@ -39,5 +44,11 @@ public class ServiceLibrary {
 
     public Cd getCd(Long cdId) {
         return cdRepository.getCdById(cdId);
+    }
+
+
+    public Long saveDvd(String title, String author, String editor, int year, int nbScenes, String genre) {
+        Dvd dvd = dvdRepository.save(new Dvd(title,author,editor,getDateFromLocalDate(year, 1,1), nbScenes, genre));
+        return dvd.getId();
     }
 }
