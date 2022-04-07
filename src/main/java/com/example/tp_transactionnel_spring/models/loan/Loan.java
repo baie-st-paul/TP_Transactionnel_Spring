@@ -10,6 +10,7 @@ import lombok.ToString;
 
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 @Entity
@@ -20,7 +21,7 @@ public class Loan {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "loan_id")
     private long id;
-    private Date loanDate;
+    private LocalDate loanDate;
 
 
     @ManyToOne
@@ -32,17 +33,14 @@ public class Loan {
     @OneToOne
     private Document document;
 
-    public Loan( Document document, Client client, Date loanDate) {
+    public Loan( Document document, Client client) {
         this.client = client;
         this.document = document;
-        this.loanDate = loanDate ;
+        this.loanDate = LocalDate.now() ;
     }
 
-    public Date fetchReturnDate(){
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(loanDate);
-        calendar.add(Calendar.DATE, document.getLOAN_DAYS());
-        return calendar.getTime();
+    public LocalDate fetchReturnDate(){
+        return loanDate.plusDays(document.getLOAN_DAYS());
     }
 
     public double getCOST_PER_DAYS_LATE() {

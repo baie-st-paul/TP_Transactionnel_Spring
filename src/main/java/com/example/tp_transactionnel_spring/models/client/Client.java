@@ -43,10 +43,10 @@ public class Client {
 
     public double getTotalFees(){
         double totalFees = 0;
-        Date today = java.sql.Timestamp.valueOf(LocalDateTime.now());
+        LocalDate today = LocalDate.now();
         for (Loan loan : loanList) {
-            if (loan.fetchReturnDate().before(today)){
-                long nbDaysLate = DAYS.between(LocalDate.now(),new java.sql.Date(loan.fetchReturnDate().getTime()).toLocalDate() );
+            if (loan.fetchReturnDate().isBefore(today)){
+                long nbDaysLate = DAYS.between(today,loan.fetchReturnDate() );
 
                 totalFees += loan.getCOST_PER_DAYS_LATE() * nbDaysLate;
             }
