@@ -30,9 +30,23 @@ public class ServiceLibrary {
     private LoanRepository loanRepository;
 
     public long saveBook(String title, String author, String editor, int year, int nbPages, String genre ) {
-        Book book = bookRepository.save(new Book(title,author,editor, getYearFromInteger(year),nbPages,genre));
+        Book book;
+        if(bookAlreadyExist(title)){
+            book = bookRepository.getBookByTitle(title);
+            book.setNb_copies(book.getNb_copies()+1);
+            bookRepository.save(book);
+        }
+        else{
+            book = bookRepository.save(new Book(title,author,editor, getYearFromInteger(year),nbPages,genre));
+        }
+
         return book.getId();
     }
+
+    private boolean bookAlreadyExist(String bookTitle){
+        return bookRepository.existsByTitle(bookTitle);
+    }
+
 
     public Book getBook(long bookid) {
         return bookRepository.getBookById(bookid);
@@ -82,6 +96,7 @@ public class ServiceLibrary {
             if(client.getTotalFees() > 0)throw new Exception("Client has fees");
             if(book.isLoaned())throw new Exception("Book is already loaned");
             setBookIsLoaned(true, book);
+            setBookRemoveCopie(book);
             Loan loan = loanRepository.save( new Loan(book, client));
             return loan.getId();
         }
@@ -89,6 +104,12 @@ public class ServiceLibrary {
             System.out.println(e.getLocalizedMessage());
             return 0;
         }
+    }
+
+    private void setBookRemoveCopie(Book book) {
+        book.setNb_copies(book.getNb_copies()-1);
+        bookRepository.save(book);
+
     }
 
     public long loanCdToClient(long cdid, long clientId) {
@@ -126,13 +147,13 @@ public class ServiceLibrary {
     private void setBookIsLoaned(boolean bookIsLoaned, Book book){
         book.setLoaned(bookIsLoaned);
         bookRepository.save(book);
-
     }
 
     private void setCdIsLoaned(boolean cdIsLoaned, Cd cd){
         cd.setLoaned(cdIsLoaned);
         cdRepository.save(cd);
     }
+
     private void setDvdIsLoaned(boolean dvdIsLoaned, Dvd dvd){
         dvd.setLoaned(dvdIsLoaned);
         dvdRepository.save(dvd);

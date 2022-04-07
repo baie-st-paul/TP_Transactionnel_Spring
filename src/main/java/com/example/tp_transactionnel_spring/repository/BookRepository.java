@@ -9,4 +9,8 @@ public interface BookRepository extends JpaRepository<Book,Long> {
 
     @Query(value = "SELECT d FROM Document d LEFT JOIN Book b ON b.id = d.id WHERE d.id = :docId")
     Book getBookById(@Param(("docId")) long id);
+
+    boolean existsByTitle(String title);
+
+    Book getBookByTitle(String bookTitle);
 }

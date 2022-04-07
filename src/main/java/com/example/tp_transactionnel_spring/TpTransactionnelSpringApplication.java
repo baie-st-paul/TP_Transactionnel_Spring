@@ -25,22 +25,26 @@ public class TpTransactionnelSpringApplication implements CommandLineRunner {
 
         long book1id = serviceLibrary.saveBook("Les parapluies sont disparus", "Phil", "mouse",2004, 2, "manuel Scolaire");
         long book2id = serviceLibrary.saveBook("Les parapluies sont presque Disparue", "Phil", "mouse",2004, 6, "manuel Scolaire");
+        long book3id = serviceLibrary.saveBook("Les parapluies sont disparus", "Phil", "mouse",2004, 2, "manuel Scolaire");
 
         long cd1id = serviceLibrary.saveCd("titrecd", "diego", "ubi",2007,0, "good game");
 
         long dvd1id = serviceLibrary.saveDvd("titredvd", "pewdiepie", "disney",2006, 0, "good movie");
 
         long client1Id = serviceLibrary.createClient("phil", "vall", "add", "email", "bjd dri");
-
+        System.out.println(serviceLibrary.getBook(book1id));
         long loanId1 = serviceLibrary.loanBookToCLient(book1id,client1Id);
 
         long loanId2 = serviceLibrary.loanCdToClient(cd1id, client1Id);
 
         long loanId3 = serviceLibrary.loanDvdToClient(dvd1id, client1Id);
 
-        System.out.println(serviceLibrary.getClient(client1Id));
+
+     //   System.out.println(serviceLibrary.getClient(client1Id));
         System.out.println(serviceLibrary.getBook(book1id));
-        System.out.println(serviceLibrary.getCd(cd1id));
-        System.out.println(serviceLibrary.getDvd(dvd1id));
+   //     System.out.println(serviceLibrary.getCd(cd1id));
+    //    System.out.println(serviceLibrary.getDvd(dvd1id));
+
+
     }
 }
