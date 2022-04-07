@@ -23,12 +23,15 @@ public class TpTransactionnelSpringApplication implements CommandLineRunner {
         System.out.println("hello");
         System.out.println();
 
-        Long book1id = serviceLibrary.saveBook("Les parapluies sont disparus", "Phil", "mouse",2004, 2, "manuel Scolaire");
-        Long book2id = serviceLibrary.saveBook("Les parapluies sont presque Disparue", "Phil", "mouse",2004, 6, "manuel Scolaire");
+        long book1id = serviceLibrary.saveBook("Les parapluies sont disparus", "Phil", "mouse",2004, 2, "manuel Scolaire");
+        long book2id = serviceLibrary.saveBook("Les parapluies sont presque Disparue", "Phil", "mouse",2004, 6, "manuel Scolaire");
 
-        Long cd1id = serviceLibrary.saveCd("titrecd", "diego", "ubi",2007,0, "good game");
+        long cd1id = serviceLibrary.saveCd("titrecd", "diego", "ubi",2007,0, "good game");
 
-        Long dvd1id = serviceLibrary.saveDvd("titredvd", "pewdiepie", "disney",2006, 0, "good movie");
-        System.out.println(serviceLibrary.getDvd(dvd1id));
+        long dvd1id = serviceLibrary.saveDvd("titredvd", "pewdiepie", "disney",2006, 0, "good movie");
+
+        long client1Id = serviceLibrary.createClient("phil", "vall", "add", "email", "bjd dri");
+
+
     }
 }
