@@ -8,5 +8,5 @@ import org.springframework.data.repository.query.Param;
 public interface BookRepository extends JpaRepository<Book,Long> {
 
     @Query(value = "SELECT d FROM Document d LEFT JOIN Book b ON b.id = d.id WHERE d.id = :docId")
-    Book getById(@Param(("docId")) long id);
+    Book getBookById(@Param(("docId")) long id);
 }

@@ -25,7 +25,7 @@ public class ServiceLibrary {
     }
 
     public Book getBook(long bookid) {
-        return bookRepository.getById(bookid);
+        return bookRepository.getBookById(bookid);
     }
 
     private LocalDate getDateFromLocalDate(int year, int month, int day) {
@@ -35,5 +35,9 @@ public class ServiceLibrary {
     public Long saveCd(String title, String author, String editor, int year, int nbScenes, String genre) {
         Cd cd = cdRepository.save(new Cd(title,author,editor,getDateFromLocalDate(year,1,1),nbScenes, genre));
         return cd.getId();
+    }
+
+    public Cd getCd(Long cdId) {
+        return cdRepository.getCdById(cdId);
     }
 }
