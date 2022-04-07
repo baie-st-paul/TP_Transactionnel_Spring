@@ -41,12 +41,13 @@ public class Loan {
     public Loan( Document document, Client client) {
         this.client = client;
         this.document = document;
-        this.loanDate = LocalDate.now() ;
+        this.loanDate = LocalDate.now();
+        this.returnDate = fetchReturnDate();
+
     }
 
     public LocalDate fetchReturnDate(){
-        if(returnDate != null) return returnDate;
-          return loanDate.plusDays(document.getLOAN_DAYS());
+      return loanDate.plusDays(document.getLOAN_DAYS());
     }
 
     public double getCOST_PER_DAYS_LATE() {

@@ -45,8 +45,8 @@ public class Client {
         double totalFees = 0;
         LocalDate today = LocalDate.now();
         for (Loan loan : loanList) {
-            if (loan.fetchReturnDate().isBefore(today)){
-                long nbDaysLate = DAYS.between(today,loan.fetchReturnDate() );
+            if (loan.getReturnDate().isBefore(today)){
+                long nbDaysLate = DAYS.between(today,loan.getReturnDate() );
 
                 totalFees += loan.getCOST_PER_DAYS_LATE() * nbDaysLate;
             }
