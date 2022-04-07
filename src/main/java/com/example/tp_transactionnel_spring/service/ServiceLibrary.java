@@ -95,8 +95,23 @@ public class ServiceLibrary {
             Client client = getClient(clientId);
             Cd cd = getCd(cdid);
             if(client.getTotalFees() > 0)throw new Exception("Client has fees");
-            if(cd.isLoaned())throw new Exception("Book is already loaned");
+            if(cd.isLoaned())throw new Exception("Cd is already loaned");
             Loan loan = loanRepository.save( new Loan(cd, client));
+            return loan.getId();
+        }
+        catch (Exception e){
+            System.out.println(e.getLocalizedMessage());
+            return 0;
+        }
+    }
+
+    public long loanDvdToClient(long dvdid, long clientId) {
+        try {
+            Client client = getClient(clientId);
+            Dvd dvd = getDvd(dvdid);
+            if(client.getTotalFees() > 0)throw new Exception("Client has fees");
+            if(dvd.isLoaned())throw new Exception("Dvd is already loaned");
+            Loan loan = loanRepository.save( new Loan(dvd, client));
             return loan.getId();
         }
         catch (Exception e){
