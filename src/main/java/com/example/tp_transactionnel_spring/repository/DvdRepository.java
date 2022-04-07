@@ -2,8 +2,12 @@ package com.example.tp_transactionnel_spring.repository;
 
 import com.example.tp_transactionnel_spring.models.document.Dvd;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 public interface DvdRepository extends JpaRepository<Dvd, Long> {
 
+    @Query(value = "SELECT d FROM Document d LEFT JOIN Dvd dvd ON dvd.id = d.id WHERE d.id = :docId")
+    Dvd getDvdById(@Param("docId") long id);
 
 }

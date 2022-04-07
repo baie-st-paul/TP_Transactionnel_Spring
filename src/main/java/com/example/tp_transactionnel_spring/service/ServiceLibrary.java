@@ -51,4 +51,9 @@ public class ServiceLibrary {
         Dvd dvd = dvdRepository.save(new Dvd(title,author,editor,getDateFromLocalDate(year, 1,1), nbScenes, genre));
         return dvd.getId();
     }
+
+    public Dvd getDvd(Long dvdid) {
+        return dvdRepository.getDvdById(dvdid);
+
+    }
 }
