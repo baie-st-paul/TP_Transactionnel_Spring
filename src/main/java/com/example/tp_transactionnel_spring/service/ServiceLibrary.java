@@ -4,10 +4,8 @@ import com.example.tp_transactionnel_spring.models.client.Client;
 import com.example.tp_transactionnel_spring.models.document.Book;
 import com.example.tp_transactionnel_spring.models.document.Cd;
 import com.example.tp_transactionnel_spring.models.document.Dvd;
-import com.example.tp_transactionnel_spring.repository.BookRepository;
-import com.example.tp_transactionnel_spring.repository.CdRepository;
-import com.example.tp_transactionnel_spring.repository.ClientRepository;
-import com.example.tp_transactionnel_spring.repository.DvdRepository;
+import com.example.tp_transactionnel_spring.models.loan.Loan;
+import com.example.tp_transactionnel_spring.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -28,6 +26,9 @@ public class ServiceLibrary {
 
     @Autowired
     private ClientRepository clientRepository;
+
+    @Autowired
+    private LoanRepository loanRepository;
 
     public long saveBook(String title, String author, String editor, int year, int nbPages, String genre ) {
         Book book = bookRepository.save(new Book(title,author,editor,getDateFromLocalDate(year,1,1),nbPages,genre));
@@ -72,5 +73,21 @@ public class ServiceLibrary {
     public Client getClient(long clientId) {
         return clientRepository.getClientById(clientId);
 
+    }
+
+    public long loanBookToCLient(long bookId, long clientId) {
+
+        try {
+            Client client = getClient(clientId);
+            Book book = getBook(bookId);
+            if(client.getTotalFees() > 0)throw new Exception("Client has fees");
+            if(book.isLoaned())throw new Exception("Book is already loaned");
+            Loan loan = loanRepository.save( new Loan(book, client));
+            return loan.getId();
+        }
+        catch (Exception e){
+            System.out.println(e.getLocalizedMessage());
+            return 0;
+        }
     }
 }

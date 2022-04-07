@@ -23,6 +23,11 @@ public class Loan {
     private long id;
     private LocalDate loanDate;
 
+    public void setReturnDate(LocalDate returnDate) {
+        this.returnDate = returnDate;
+    }
+
+    private LocalDate returnDate;
 
     @ManyToOne
     @JoinColumn(name = "client_id")
@@ -40,7 +45,8 @@ public class Loan {
     }
 
     public LocalDate fetchReturnDate(){
-        return loanDate.plusDays(document.getLOAN_DAYS());
+        if(returnDate != null) return returnDate;
+          return loanDate.plusDays(document.getLOAN_DAYS());
     }
 
     public double getCOST_PER_DAYS_LATE() {
