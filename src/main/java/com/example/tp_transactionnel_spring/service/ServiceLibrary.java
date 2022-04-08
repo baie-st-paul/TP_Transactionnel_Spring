@@ -222,4 +222,16 @@ public class ServiceLibrary {
     public List<Dvd> getDvdByGenre(String genre) {
         return dvdRepository.getDvdByGenre(genre);
     }
+
+    public List<Book> getBookByPublishingYear(int year) {
+        return bookRepository.getBookByPublicationYear(getYearFromInteger(year));
+    }
+
+    public List<Cd> getCdByPublishingYear(int year) {
+        return cdRepository.getCdByPublicationYear(getYearFromInteger(year));
+    }
+
+    public List<Dvd> getDvdByPublishingYear(int year) {
+        return dvdRepository.getDvdByPublicationYear(getYearFromInteger(year));
+    }
 }
