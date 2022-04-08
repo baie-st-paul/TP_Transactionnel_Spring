@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Locale;
 
 @Component
 public class ServiceLibrary {
@@ -245,5 +246,17 @@ public class ServiceLibrary {
 
     public List<Dvd> getDvdByAuthor(String author) {
         return dvdRepository.getDvdByAuthor(author);
+    }
+
+    public List<Book> getBookByTitle(String title) {
+        return bookRepository.getBookWithTitleLike(title.toLowerCase(Locale.ROOT));
+    }
+
+    public List<Cd> getCdByTitle(String title) {
+        return cdRepository.getCdWithTitleLike(title);
+    }
+
+    public List<Dvd> getDvdByTitle(String title) {
+        return dvdRepository.getDvdWithTitleLike(title);
     }
 }

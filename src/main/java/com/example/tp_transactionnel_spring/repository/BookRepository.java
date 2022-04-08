@@ -22,4 +22,7 @@ public interface BookRepository extends JpaRepository<Book,Long> {
     List<Book> getBookByPublicationYear(LocalDate publicationYear);
 
     List<Book> getBookByAuthor(String author);
+
+    @Query(value = "SELECT b FROM Book b WHERE b.title LIKE %:title%")
+    List<Book> getBookWithTitleLike(@Param("title") String title);
 }

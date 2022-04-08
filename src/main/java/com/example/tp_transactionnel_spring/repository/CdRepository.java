@@ -22,4 +22,7 @@ public interface CdRepository extends JpaRepository<Cd,Long> {
     List<Cd> getCdByPublicationYear(LocalDate publicationYear);
 
     List<Cd> getCdByAuthor(String author);
+
+    @Query(value = "SELECT c FROM Cd c WHERE c.title LIKE %:title%")
+    List<Cd> getCdWithTitleLike(@Param("title") String title);
 }

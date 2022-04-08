@@ -22,4 +22,7 @@ public interface DvdRepository extends JpaRepository<Dvd, Long> {
     List<Dvd> getDvdByPublicationYear(LocalDate publicationYear);
 
     List<Dvd> getDvdByAuthor(String author);
+
+    @Query(value = "SELECT dvd FROM Dvd dvd WHERE dvd.title LIKE %:title%")
+    List<Dvd> getDvdWithTitleLike(@Param("title") String title);
 }
