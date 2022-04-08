@@ -39,7 +39,6 @@ public class ServiceLibrary {
         else{
             book = bookRepository.save(new Book(title,author,editor, getYearFromInteger(year),nbPages,genre));
         }
-
         return book.getId();
     }
 
@@ -57,8 +56,20 @@ public class ServiceLibrary {
     }
 
     public long saveCd(String title, String author, String editor, int year, int nbScenes, String genre) {
-        Cd cd = cdRepository.save(new Cd(title,author,editor, getYearFromInteger(year),nbScenes, genre));
+        Cd cd;
+        if(cdAlreadyExist(title)){
+            cd = cdRepository.getCdByTitle(title);
+            cd.setNb_copies(cd.getNb_copies()+1);
+            cdRepository.save(cd);
+        }
+        else{
+            cd = cdRepository.save(new Cd(title,author,editor, getYearFromInteger(year),nbScenes, genre));
+        }
         return cd.getId();
+    }
+
+    private boolean cdAlreadyExist(String cdTitle) {
+        return cdRepository.existsByTitle(cdTitle);
     }
 
     public Cd getCd(Long cdId) {
@@ -67,8 +78,21 @@ public class ServiceLibrary {
 
 
     public long saveDvd(String title, String author, String editor, int year, int nbScenes, String genre) {
-        Dvd dvd = dvdRepository.save(new Dvd(title,author,editor, getYearFromInteger(year), nbScenes, genre));
+        Dvd dvd;
+        if(dvdAlreadyExist(title)){
+            dvd = dvdRepository.getDvdByTitle(title);
+            dvd.setNb_copies(dvd.getNb_copies()+1);
+            dvdRepository.save(dvd);
+        }
+        else{
+            dvd = dvdRepository.save(new Dvd(title,author,editor, getYearFromInteger(year), nbScenes, genre));
+        }
+
         return dvd.getId();
+    }
+
+    private boolean dvdAlreadyExist(String dvdTitle) {
+        return dvdRepository.existsByTitle(dvdTitle);
     }
 
     public Dvd getDvd(Long dvdid) {
@@ -119,6 +143,7 @@ public class ServiceLibrary {
             if(client.getTotalFees() > 0)throw new Exception("Client has fees");
             if(cd.isLoaned())throw new Exception("Cd is already loaned");
             setCdIsLoaned(true, cd);
+            setCdRemoveCopie(cd);
             Loan loan = loanRepository.save( new Loan(cd, client));
             return loan.getId();
         }
@@ -128,6 +153,12 @@ public class ServiceLibrary {
         }
     }
 
+    private void setCdRemoveCopie(Cd cd) {
+        cd.setNb_copies(cd.getNb_copies()-1);
+        cdRepository.save(cd);
+
+    }
+
     public long loanDvdToClient(long dvdid, long clientId) {
         try {
             Client client = getClient(clientId);
@@ -135,6 +166,7 @@ public class ServiceLibrary {
             if(client.getTotalFees() > 0)throw new Exception("Client has fees");
             if(dvd.isLoaned())throw new Exception("Dvd is already loaned");
             setDvdIsLoaned(true, dvd);
+            setDvdRemoveCopie(dvd);
             Loan loan = loanRepository.save( new Loan(dvd, client));
             return loan.getId();
         }
@@ -142,6 +174,11 @@ public class ServiceLibrary {
             System.out.println(e.getLocalizedMessage());
             return 0;
         }
+    }
+
+    private void setDvdRemoveCopie(Dvd dvd) {
+        dvd.setNb_copies(dvd.getNb_copies()-1);
+        dvdRepository.save(dvd);
     }
 
     private void setBookIsLoaned(boolean bookIsLoaned, Book book){

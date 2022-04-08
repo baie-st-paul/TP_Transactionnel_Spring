@@ -9,4 +9,8 @@ public interface CdRepository extends JpaRepository<Cd,Long> {
 
     @Query(value = "SELECT d FROM Document d LEFT JOIN Cd cd ON cd.id = d.id WHERE d.id = :docId")
     Cd getCdById(@Param("docId") long id);
+
+    boolean existsByTitle(String cdTitle);
+
+    Cd getCdByTitle(String title);
 }

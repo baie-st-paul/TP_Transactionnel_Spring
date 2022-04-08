@@ -32,7 +32,8 @@ public class TpTransactionnelSpringApplication implements CommandLineRunner {
         long dvd1id = serviceLibrary.saveDvd("titredvd", "pewdiepie", "disney",2006, 0, "good movie");
 
         long client1Id = serviceLibrary.createClient("phil", "vall", "add", "email", "bjd dri");
-        System.out.println(serviceLibrary.getBook(book1id));
+        System.out.println(serviceLibrary.getCd(cd1id));
+
         long loanId1 = serviceLibrary.loanBookToCLient(book1id,client1Id);
 
         long loanId2 = serviceLibrary.loanCdToClient(cd1id, client1Id);
@@ -41,9 +42,9 @@ public class TpTransactionnelSpringApplication implements CommandLineRunner {
 
 
      //   System.out.println(serviceLibrary.getClient(client1Id));
-        System.out.println(serviceLibrary.getBook(book1id));
-   //     System.out.println(serviceLibrary.getCd(cd1id));
-    //    System.out.println(serviceLibrary.getDvd(dvd1id));
+     //   System.out.println(serviceLibrary.getBook(book1id));
+          System.out.println(serviceLibrary.getCd(cd1id));
+     //   System.out.println(serviceLibrary.getDvd(dvd1id));
 
 
     }
