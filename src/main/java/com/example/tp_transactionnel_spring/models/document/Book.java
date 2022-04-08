@@ -20,7 +20,6 @@ public class Book extends Document{
 
     private int nbPages;
 
-
     public Book(String title, String author, String editor, LocalDate publicationYear, int nbPages, String genre) {
         super(title, author, editor, publicationYear, genre);
         this.nbPages = nbPages;

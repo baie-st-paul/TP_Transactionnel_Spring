@@ -1,14 +1,10 @@
 package com.example.tp_transactionnel_spring.models.loan;
 
-
-
 import com.example.tp_transactionnel_spring.models.client.Client;
 import com.example.tp_transactionnel_spring.models.document.Document;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-
-
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -29,7 +25,6 @@ public class Loan {
     @ToString.Exclude
     private Client client;
 
-
     @OneToOne
     private Document document;
 
@@ -38,7 +33,6 @@ public class Loan {
         this.document = document;
         this.loanDate = LocalDate.now();
         this.returnDate = fetchReturnDate();
-
     }
 
     public LocalDate fetchReturnDate(){
@@ -48,7 +42,5 @@ public class Loan {
     public double getCOST_PER_DAYS_LATE() {
         return 0.25;
     }
-
-
 
 }

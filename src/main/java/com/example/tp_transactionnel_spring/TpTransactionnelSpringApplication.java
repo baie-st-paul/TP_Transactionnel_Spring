@@ -47,6 +47,5 @@ public class TpTransactionnelSpringApplication implements CommandLineRunner {
         System.out.println(serviceLibrary.getCd(cd1id));
         System.out.println(serviceLibrary.getDvd(dvd1id));
 
-
     }
 }

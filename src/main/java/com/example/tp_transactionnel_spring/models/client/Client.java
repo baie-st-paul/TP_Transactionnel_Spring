@@ -25,10 +25,8 @@ public class Client {
     private String eMail;
     private String postalCode;
 
-
     @OneToMany(mappedBy = "client")
     private List<Loan> loanList = new ArrayList<>();
-
 
     public Client( String firstName, String lastName, String address, String eMail, String postalCode) {
         this.firstName = firstName;
@@ -36,7 +34,6 @@ public class Client {
         this.address = address;
         this.eMail = eMail;
         this.postalCode = postalCode;
-
     }
 
     public double getTotalFees(){

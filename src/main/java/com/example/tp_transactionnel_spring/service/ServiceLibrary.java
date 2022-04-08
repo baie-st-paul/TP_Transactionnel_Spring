@@ -46,7 +46,6 @@ public class ServiceLibrary {
         return bookRepository.existsByTitle(bookTitle);
     }
 
-
     public Book getBook(long bookid) {
         return bookRepository.getBookById(bookid);
     }
@@ -76,7 +75,6 @@ public class ServiceLibrary {
         return cdRepository.getCdById(cdId);
     }
 
-
     public long saveDvd(String title, String author, String editor, int year, int nbScenes, String genre) {
         Dvd dvd;
         if(dvdAlreadyExist(title)){
@@ -87,7 +85,6 @@ public class ServiceLibrary {
         else{
             dvd = dvdRepository.save(new Dvd(title,author,editor, getYearFromInteger(year), nbScenes, genre));
         }
-
         return dvd.getId();
     }
 
@@ -97,23 +94,18 @@ public class ServiceLibrary {
 
     public Dvd getDvd(Long dvdid) {
         return dvdRepository.getDvdById(dvdid);
-
     }
-
 
     public long createClient(String firstName, String lastName, String address, String eMail, String postalCode) {
         Client client =clientRepository.save(new Client(firstName,lastName,address,eMail,postalCode));
         return client.getId();
-
     }
 
     public Client getClient(long clientId) {
         return clientRepository.getClientById(clientId);
-
     }
 
     public long loanBookToCLient(long bookId, long clientId) {
-
         try {
             Client client = getClient(clientId);
             Book book = getBook(bookId);
@@ -133,7 +125,6 @@ public class ServiceLibrary {
     private void setBookRemoveCopie(Book book) {
         book.setNb_copies(book.getNb_copies()-1);
         bookRepository.save(book);
-
     }
 
     public long loanCdToClient(long cdid, long clientId) {
@@ -156,7 +147,6 @@ public class ServiceLibrary {
     private void setCdRemoveCopie(Cd cd) {
         cd.setNb_copies(cd.getNb_copies()-1);
         cdRepository.save(cd);
-
     }
 
     public long loanDvdToClient(long dvdid, long clientId) {
@@ -196,19 +186,16 @@ public class ServiceLibrary {
         dvdRepository.save(dvd);
     }
 
-
     public void returnBookFromClient(long loanId) {
-        Loan loan = loanRepository.getById(loanId);
+        Loan loan = loanRepository.getBookLoanById(loanId);
         setBookIsLoaned(false, (Book) loan.getDocument());
         loan.getDocument().setNb_copies(loan.getDocument().getNb_copies()+1);
         bookRepository.save((Book) loan.getDocument());
         loanRepository.delete(loan);
-
-
     }
 
     public void returnCdFromClient(long loanId) {
-        Loan loan = loanRepository.getById(loanId);
+        Loan loan = loanRepository.getCdLoanById(loanId);
         setCdIsLoaned(false, (Cd) loan.getDocument());
         loan.getDocument().setNb_copies(loan.getDocument().getNb_copies()+1);
         cdRepository.save((Cd) loan.getDocument());
@@ -216,7 +203,7 @@ public class ServiceLibrary {
     }
 
     public void returnDvdFromClient(long loanId) {
-        Loan loan = loanRepository.getById(loanId);
+        Loan loan = loanRepository.getDvdLoanById(loanId);
         setDvdIsLoaned(false, (Dvd) loan.getDocument());
         loan.getDocument().setNb_copies(loan.getDocument().getNb_copies()+1);
         dvdRepository.save((Dvd) loan.getDocument());

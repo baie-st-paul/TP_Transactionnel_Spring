@@ -27,5 +27,4 @@ public class Cd extends Document{
         this.nbScenes = nbScenes;
     }
 
-
 }

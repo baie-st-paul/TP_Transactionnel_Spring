@@ -26,8 +26,6 @@ public abstract class Document {
     private int nb_copies;
     private boolean isLoaned;
 
-
-
     public Document(String title, String author, String editor, LocalDate publicationYear, String genre) {
         this.title = title;
         this.author = author;
@@ -38,9 +36,6 @@ public abstract class Document {
         this.nb_copies = 1;
     }
 
-
-
-
     public int getLOAN_DAYS() {
         return switch (this.getClass().getSimpleName()) {
             case "Book" -> 21;
@@ -49,6 +44,5 @@ public abstract class Document {
             default -> 0;
         };
     }
-
 
 }
