@@ -8,7 +8,7 @@ import lombok.ToString;
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 import java.time.LocalDate;
-import java.util.Date;
+
 
 @EqualsAndHashCode(callSuper = true)
 @Entity

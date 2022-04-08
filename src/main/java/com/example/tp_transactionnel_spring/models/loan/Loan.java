@@ -11,8 +11,7 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Calendar;
-import java.util.Date;
+
 @Entity
 @Data
 @NoArgsConstructor
