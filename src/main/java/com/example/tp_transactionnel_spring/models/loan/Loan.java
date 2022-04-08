@@ -22,10 +22,6 @@ public class Loan {
     private long id;
     private LocalDate loanDate;
 
-    public void setReturnDate(LocalDate returnDate) {
-        this.returnDate = returnDate;
-    }
-
     private LocalDate returnDate;
 
     @ManyToOne

@@ -197,4 +197,29 @@ public class ServiceLibrary {
     }
 
 
+    public void returnBookFromClient(long loanId) {
+        Loan loan = loanRepository.getById(loanId);
+        setBookIsLoaned(false, (Book) loan.getDocument());
+        loan.getDocument().setNb_copies(loan.getDocument().getNb_copies()+1);
+        bookRepository.save((Book) loan.getDocument());
+        loanRepository.delete(loan);
+
+
+    }
+
+    public void returnCdFromClient(long loanId) {
+        Loan loan = loanRepository.getById(loanId);
+        setCdIsLoaned(false, (Cd) loan.getDocument());
+        loan.getDocument().setNb_copies(loan.getDocument().getNb_copies()+1);
+        cdRepository.save((Cd) loan.getDocument());
+        loanRepository.delete(loan);
+    }
+
+    public void returnDvdFromClient(long loanId) {
+        Loan loan = loanRepository.getById(loanId);
+        setDvdIsLoaned(false, (Dvd) loan.getDocument());
+        loan.getDocument().setNb_copies(loan.getDocument().getNb_copies()+1);
+        dvdRepository.save((Dvd) loan.getDocument());
+        loanRepository.delete(loan);
+    }
 }
