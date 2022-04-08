@@ -20,4 +20,6 @@ public interface BookRepository extends JpaRepository<Book,Long> {
     List<Book> getBookByGenre(String genre);
 
     List<Book> getBookByPublicationYear(LocalDate publicationYear);
+
+    List<Book> getBookByAuthor(String author);
 }

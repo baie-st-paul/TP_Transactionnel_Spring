@@ -20,4 +20,6 @@ public interface CdRepository extends JpaRepository<Cd,Long> {
     List<Cd> getCdByGenre(String genre);
 
     List<Cd> getCdByPublicationYear(LocalDate publicationYear);
+
+    List<Cd> getCdByAuthor(String author);
 }

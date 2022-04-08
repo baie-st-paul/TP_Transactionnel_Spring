@@ -20,4 +20,6 @@ public interface DvdRepository extends JpaRepository<Dvd, Long> {
     List<Dvd> getDvdByGenre(String genre);
 
     List<Dvd> getDvdByPublicationYear(LocalDate publicationYear);
+
+    List<Dvd> getDvdByAuthor(String author);
 }
