@@ -5,6 +5,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
+
 public interface BookRepository extends JpaRepository<Book,Long> {
 
     @Query(value = "SELECT d FROM Document d LEFT JOIN Book b ON b.id = d.id WHERE d.id = :docId")
@@ -13,4 +15,6 @@ public interface BookRepository extends JpaRepository<Book,Long> {
     boolean existsByTitle(String title);
 
     Book getBookByTitle(String bookTitle);
+
+    List<Book> getBookByGenre(String genre);
 }

@@ -5,6 +5,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
+
 public interface DvdRepository extends JpaRepository<Dvd, Long> {
 
     @Query(value = "SELECT d FROM Document d LEFT JOIN Dvd dvd ON dvd.id = d.id WHERE d.id = :docId")
@@ -13,4 +15,6 @@ public interface DvdRepository extends JpaRepository<Dvd, Long> {
     Dvd getDvdByTitle(String title);
 
     boolean existsByTitle(String dvdTitle);
+
+    List<Dvd> getDvdByGenre(String genre);
 }

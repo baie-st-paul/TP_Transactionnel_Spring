@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Component
 public class ServiceLibrary {
@@ -208,5 +209,17 @@ public class ServiceLibrary {
         loan.getDocument().setNb_copies(loan.getDocument().getNb_copies()+1);
         dvdRepository.save((Dvd) loan.getDocument());
         loanRepository.delete(loan);
+    }
+
+    public List<Book> getBookByGenre(String genre) {
+        return bookRepository.getBookByGenre(genre);
+    }
+
+    public List<Cd> getCdByGenre(String genre) {
+        return cdRepository.getCdByGenre(genre);
+    }
+
+    public List<Dvd> getDvdByGenre(String genre) {
+        return dvdRepository.getDvdByGenre(genre);
     }
 }

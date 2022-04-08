@@ -42,10 +42,8 @@ public class TpTransactionnelSpringApplication implements CommandLineRunner {
         serviceLibrary.returnCdFromClient(loanId2);
         serviceLibrary.returnDvdFromClient(loanId3);
 
-        System.out.println(serviceLibrary.getClient(client1Id));
-        System.out.println(serviceLibrary.getBook(book1id));
-        System.out.println(serviceLibrary.getCd(cd1id));
-        System.out.println(serviceLibrary.getDvd(dvd1id));
-
+        System.out.println(serviceLibrary.getBookByGenre("manuel Scolaire"));
+        System.out.println(serviceLibrary.getCdByGenre("good game"));
+        System.out.println(serviceLibrary.getDvdByGenre("good movie"));
     }
 }
