@@ -12,7 +12,10 @@ import java.util.logging.Logger;
 public class RootController {
   //  Logger logger = LoggerFactory.getLogger(RootController.class);
 
+    private final ServiceLibrary serviceLibrary;
+
     public RootController(ServiceLibrary serviceLibrary){
+        this.serviceLibrary = serviceLibrary;
     }
 
     @GetMapping("/")
@@ -21,4 +24,11 @@ public class RootController {
         return "index";
     }
 
+    @GetMapping("/livres")
+    public String getProfs(Model model) {
+        model.addAttribute("pageTitle", "Mon Demo");
+        var books = serviceLibrary.findAllBook();
+        model.addAttribute("books", books);
+        return "books";
+    }
 }

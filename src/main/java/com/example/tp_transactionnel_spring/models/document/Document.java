@@ -24,7 +24,6 @@ public abstract class Document {
     private LocalDate publicationYear;
     private String genre;
     private int nb_copies;
-    private boolean isLoaned;
 
     public Document(String title, String author, String editor, LocalDate publicationYear, String genre) {
         this.title = title;
@@ -32,7 +31,6 @@ public abstract class Document {
         this.editor = editor;
         this.publicationYear = publicationYear;
         this.genre = genre;
-        this.isLoaned = false;
         this.nb_copies = 1;
     }
 
