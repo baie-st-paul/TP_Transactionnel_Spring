@@ -44,6 +44,7 @@ public class ServiceLibrary {
         return book.getId();
     }
 
+
     private boolean bookAlreadyExist(String bookTitle){
         return bookRepository.existsByTitle(bookTitle);
     }

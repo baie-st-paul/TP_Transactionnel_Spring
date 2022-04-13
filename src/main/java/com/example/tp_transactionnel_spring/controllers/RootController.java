@@ -1,7 +1,9 @@
 package com.example.tp_transactionnel_spring.controllers;
 
+import com.example.tp_transactionnel_spring.forms.BookForm;
 import com.example.tp_transactionnel_spring.forms.ClientForm;
 import com.example.tp_transactionnel_spring.models.client.Client;
+import com.example.tp_transactionnel_spring.models.document.Book;
 import com.example.tp_transactionnel_spring.service.ServiceLibrary;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -56,5 +58,22 @@ public class RootController {
         model.addAttribute("pageTitle1", "Client");
         model.addAttribute("clientForm",clientForm );
         return "redirect:listClients";
+    }
+
+    @GetMapping("/createBook")
+    public String getBookCreate(@ModelAttribute BookForm bookForm, Model model, RedirectAttributes redirectAttributes){
+        bookForm = new BookForm(new Book());
+        model.addAttribute("bookForm" , bookForm);
+        return "bookEdit";
+    }
+
+    @PostMapping("/createBook")
+    public String bookPost(@ModelAttribute BookForm bookForm, BindingResult errors, Model model, RedirectAttributes redirectAttributes){
+        logger.info("book: " + bookForm);
+        serviceLibrary.saveBook(bookForm.getTitle(), bookForm.getAuthor(),bookForm.getEditor(), bookForm.getPublicationYear(), bookForm.getNb_pages(), bookForm.getGenre());
+        redirectAttributes.addFlashAttribute("bookForm", bookForm);
+        model.addAttribute("pageTitle1", "Book");
+        model.addAttribute("bookForm", bookForm);
+        return "redirect:listBooks";
     }
 }
