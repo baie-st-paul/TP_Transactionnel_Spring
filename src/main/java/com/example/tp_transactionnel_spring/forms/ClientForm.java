@@ -12,7 +12,6 @@ public class ClientForm {
     private String eMail;
     private String postalCode;
 
-
     public ClientForm(String id, String firstName, String lastName, String address, String eMail, String postalCode) {
         this.id = id;
         this.firstName = firstName;

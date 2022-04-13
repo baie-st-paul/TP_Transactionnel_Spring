@@ -30,5 +30,4 @@ public class BookForm {
         this(Long.toString(book.getId()), book.getTitle(), book.getAuthor(),book.getEditor(), 0, book.getGenre(), book.getNb_pages(), 1);
     }
 
-
 }

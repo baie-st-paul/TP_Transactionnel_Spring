@@ -36,6 +36,5 @@ public class TpTransactionnelSpringApplication implements CommandLineRunner {
 
         long loanId3 = serviceLibrary.loanDvdToClient(dvd1id, client1Id);
 
-
     }
 }
