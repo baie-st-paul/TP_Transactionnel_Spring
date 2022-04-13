@@ -98,8 +98,13 @@ public class ServiceLibrary {
         return dvdRepository.getDvdById(dvdid);
     }
 
-    public long createClient(String firstName, String lastName, String address, String eMail, String postalCode) {
+    public long saveClient(String firstName, String lastName, String address, String eMail, String postalCode) {
         Client client =clientRepository.save(new Client(firstName,lastName,address,eMail,postalCode));
+        return client.getId();
+    }
+
+    public long saveClient(Client client){
+        clientRepository.save(client);
         return client.getId();
     }
 
@@ -248,4 +253,5 @@ public class ServiceLibrary {
     public List<Client> findAllClient(){
         return clientRepository.findAll();
     }
+
 }
