@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>List Clients</title>
+    </head>
+    <body>
+        <table>
+            <thead>
+                <th>Id</th>
+                <th>firstname</th>
+                <th>lastname</th>
+                <th>address</th>
+                <th>eMail</th>
+                <th>postal code</th>
+            </thead>
+            <tbody>
+            <tr th:each="client: ${clients}">
+                <td th:text="${client.getId()}" />
+                <td th:text="${client.getFirstName()}" />
+                <td th:text="${client.getLastName()}" />
+                <td th:text="${client.getAddress()}" />
+                <td th:text="${client.getEMail()}" />
+                <td th:text="${client.getPostalCode()}" />
+            </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

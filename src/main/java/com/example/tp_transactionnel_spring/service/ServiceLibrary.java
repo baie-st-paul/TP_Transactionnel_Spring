@@ -244,4 +244,8 @@ public class ServiceLibrary {
     public List<Book> findAllBook(){
         return bookRepository.findAll();
     }
+
+    public List<Client> findAllClient(){
+        return clientRepository.findAll();
+    }
 }

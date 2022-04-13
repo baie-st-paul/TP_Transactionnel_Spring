@@ -28,4 +28,11 @@ public class RootController {
         model.addAttribute("books", serviceLibrary.findAllBook());
         return "listBooks";
     }
+
+    @GetMapping("/listClients")
+    public String listClients(Model model){
+        model.addAttribute("clients",serviceLibrary.findAllClient());
+        return "listClients";
+    }
+
 }
