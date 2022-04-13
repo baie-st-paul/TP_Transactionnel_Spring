@@ -2,6 +2,7 @@ package com.example.tp_transactionnel_spring.controllers;
 
 import com.example.tp_transactionnel_spring.forms.BookForm;
 import com.example.tp_transactionnel_spring.forms.ClientForm;
+import com.example.tp_transactionnel_spring.forms.LoanBookForm;
 import com.example.tp_transactionnel_spring.models.client.Client;
 import com.example.tp_transactionnel_spring.models.document.Book;
 import com.example.tp_transactionnel_spring.service.ServiceLibrary;
@@ -74,6 +75,23 @@ public class RootController {
         redirectAttributes.addFlashAttribute("bookForm", bookForm);
         model.addAttribute("pageTitle1", "Book");
         model.addAttribute("bookForm", bookForm);
+        return "redirect:listBooks";
+    }
+
+    @GetMapping("/loanBook")
+    public String getLoanBook(@ModelAttribute LoanBookForm loanBookForm, Model model, RedirectAttributes redirectAttributes){
+        loanBookForm = new LoanBookForm();
+        model.addAttribute("loanBookForm", loanBookForm);
+        return "loanBook";
+    }
+
+    @PostMapping("/loanBook")
+    public String loanPost(@ModelAttribute LoanBookForm loanBookForm, BindingResult errors, Model model, RedirectAttributes redirectAttributes){
+        logger.info("loan" + loanBookForm);
+        serviceLibrary.loanBookToCLient(loanBookForm.getBookId(), loanBookForm.getClientId());
+        redirectAttributes.addFlashAttribute("LoanBookForm" , loanBookForm);
+        model.addAttribute("pageTitle1", "loanBook");
+        model.addAttribute("loanBookForm", loanBookForm);
         return "redirect:listBooks";
     }
 }

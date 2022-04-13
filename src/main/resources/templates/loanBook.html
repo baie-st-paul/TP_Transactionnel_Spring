@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>loan Book</title>
+    </head>
+    <body>
+        <form action="#" th:action="@{/loanBook}" th:object="${loanBookForm}" method="post">
+            <table border="1">
+                <tr>
+                    <td><label>Book id</label></td>
+                    <td><input type="number" th:field="*{bookId}"/></td>
+                </tr>
+                <tr>
+                    <td><label>Client id</label></td>
+                    <td><input type="number" th:field="*{clientId}"/></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="save" /></td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>
