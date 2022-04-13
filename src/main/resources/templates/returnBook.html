@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Return Book</title>
+    </head>
+    <body>
+        <form action="#" th:action="@{/returnBook}" th:object="${returnBookForm}" method="post">
+            <table border="1">
+                <tr>
+                    <td><label>Loan id</label></td>
+                    <td><input type="number" th:field="*{loanId}"/></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="save" /></td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>

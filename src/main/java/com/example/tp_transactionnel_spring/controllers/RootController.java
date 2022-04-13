@@ -3,6 +3,7 @@ package com.example.tp_transactionnel_spring.controllers;
 import com.example.tp_transactionnel_spring.forms.BookForm;
 import com.example.tp_transactionnel_spring.forms.ClientForm;
 import com.example.tp_transactionnel_spring.forms.LoanBookForm;
+import com.example.tp_transactionnel_spring.forms.ReturnBookForm;
 import com.example.tp_transactionnel_spring.models.client.Client;
 import com.example.tp_transactionnel_spring.models.document.Book;
 import com.example.tp_transactionnel_spring.service.ServiceLibrary;
@@ -86,12 +87,28 @@ public class RootController {
     }
 
     @PostMapping("/loanBook")
-    public String loanPost(@ModelAttribute LoanBookForm loanBookForm, BindingResult errors, Model model, RedirectAttributes redirectAttributes){
+    public String loanBookPost(@ModelAttribute LoanBookForm loanBookForm, BindingResult errors, Model model, RedirectAttributes redirectAttributes){
         logger.info("loan" + loanBookForm);
         serviceLibrary.loanBookToCLient(loanBookForm.getBookId(), loanBookForm.getClientId());
         redirectAttributes.addFlashAttribute("LoanBookForm" , loanBookForm);
         model.addAttribute("pageTitle1", "loanBook");
         model.addAttribute("loanBookForm", loanBookForm);
+        return "redirect:listBooks";
+    }
+
+    @GetMapping("/returnBook")
+    public String getReturnBook(@ModelAttribute ReturnBookForm returnBookForm, Model model, RedirectAttributes redirectAttributes){
+        returnBookForm = new ReturnBookForm();
+        model.addAttribute("returnBookForm", returnBookForm);
+        return "returnBook";
+    }
+    @PostMapping("/returnBook")
+    public String returnBookPost(@ModelAttribute ReturnBookForm returnBookForm, BindingResult errors, Model model, RedirectAttributes redirectAttributes){
+        logger.info("return" + returnBookForm);
+        serviceLibrary.returnBookFromClient(returnBookForm.getLoanId());
+        redirectAttributes.addFlashAttribute("returnBookForm" , returnBookForm);
+        model.addAttribute("pageTitle1", "returnBook");
+        model.addAttribute("returnBookForm", returnBookForm);
         return "redirect:listBooks";
     }
 }
