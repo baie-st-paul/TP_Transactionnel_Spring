@@ -116,7 +116,7 @@ public class ServiceLibrary {
             setBookRemoveCopie(book);
             Loan loan = loanRepository.save( new Loan(book, client));
             return loan.getId();
-        }
+       }
         catch (Exception e){
             System.out.println(e.getLocalizedMessage());
             return 0;
@@ -168,6 +168,7 @@ public class ServiceLibrary {
     private void setDvdRemoveCopie(Dvd dvd) {
         dvd.setNb_copies(dvd.getNb_copies()-1);
         dvdRepository.save(dvd);
+
     }
 
 

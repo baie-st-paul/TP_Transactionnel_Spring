@@ -1,18 +1,17 @@
 package com.example.tp_transactionnel_spring.controllers;
 
 import com.example.tp_transactionnel_spring.service.ServiceLibrary;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.logging.Logger;
-
 @Controller
 public class RootController {
-  //  Logger logger = LoggerFactory.getLogger(RootController.class);
+     Logger logger = LoggerFactory.getLogger(RootController.class);
 
-    private final ServiceLibrary serviceLibrary;
+    private ServiceLibrary serviceLibrary;
 
     public RootController(ServiceLibrary serviceLibrary){
         this.serviceLibrary = serviceLibrary;
@@ -20,15 +19,13 @@ public class RootController {
 
     @GetMapping("/")
     public String getRootRequest(Model model) {
-        model.addAttribute("pageTitle", "Mon Demo");
+        model.addAttribute("pageTitle1", "Mon Demo");
         return "index";
     }
 
-    @GetMapping("/livres")
-    public String getProfs(Model model) {
-        model.addAttribute("pageTitle", "Mon Demo");
-        var books = serviceLibrary.findAllBook();
-        model.addAttribute("books", books);
-        return "books";
+    @GetMapping("/listBooks")
+    public String listBooks(Model model){
+        model.addAttribute("books", serviceLibrary.findAllBook());
+        return "listBooks";
     }
 }

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>listBooks</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <th>Id</th>
+            <th>title</th>
+            <th>author</th>
+            <th>editor</th>
+            <th>publication Year</th>
+            <th>genre</th>
+            <th>number of copies</th>
+        </thead>
+        <tbody>
+            <tr th:each="book: ${books}">
+                <td th:text="${book.getId()}" />
+                <td th:text="${book.getTitle()}" />
+                <td th:text="${book.getAuthor()}" />
+                <td th:text="${book.getEditor()}" />
+                <td th:text="${book.getPublicationYear()}" />
+                <td th:text="${book.getGenre()}" />
+                <td th:text="${book.getNb_copies()}" />
+
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

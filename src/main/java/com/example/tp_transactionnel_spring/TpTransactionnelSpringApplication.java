@@ -5,13 +5,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-
 @SpringBootApplication
 public class TpTransactionnelSpringApplication implements CommandLineRunner {
 
     @Autowired
     private ServiceLibrary serviceLibrary;
-
 
     public static void main(String[] args) {
         SpringApplication.run(TpTransactionnelSpringApplication.class, args);
@@ -41,6 +39,6 @@ public class TpTransactionnelSpringApplication implements CommandLineRunner {
         serviceLibrary.returnBookFromClient(loanId1);
         serviceLibrary.returnCdFromClient(loanId2);
         serviceLibrary.returnDvdFromClient(loanId3);
-        System.out.println(serviceLibrary.findAllBook());
+
     }
 }

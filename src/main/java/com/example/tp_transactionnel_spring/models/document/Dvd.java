@@ -9,8 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 import java.time.LocalDate;
 
-
-
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @Data
