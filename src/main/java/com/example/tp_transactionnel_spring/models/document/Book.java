@@ -17,11 +17,11 @@ import java.time.LocalDate;
 @ToString(callSuper = true)
 public class Book extends Document{
 
-    private int nb_pages;
+    private int nbPages;
 
-    public Book(String title, String author, String editor, LocalDate publicationYear, int nb_pages, String genre) {
+    public Book(String title, String author, String editor, LocalDate publicationYear, int nbPages, String genre) {
         super(title, author, editor, publicationYear, genre);
-        this.nb_pages = nb_pages;
+        this.nbPages = nbPages;
     }
 
 

@@ -22,7 +22,7 @@ public abstract class Document {
     private String editor;
     private LocalDate publicationYear;
     private String genre;
-    private int nb_copies;
+    private int nbCopies;
 
     public Document(String title, String author, String editor, LocalDate publicationYear, String genre) {
         this.title = title;
@@ -30,7 +30,7 @@ public abstract class Document {
         this.editor = editor;
         this.publicationYear = publicationYear;
         this.genre = genre;
-        this.nb_copies = 1;
+        this.nbCopies = 1;
     }
 
     public int getLOAN_DAYS() {

@@ -14,7 +14,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -73,7 +72,7 @@ public class RootController {
     @PostMapping("/createBook")
     public String bookPost(@ModelAttribute BookForm bookForm, BindingResult errors, Model model, RedirectAttributes redirectAttributes){
         logger.info("book: " + bookForm);
-        serviceLibrary.saveBook(bookForm.getTitle(), bookForm.getAuthor(),bookForm.getEditor(), bookForm.getPublicationYear(), bookForm.getNb_pages(), bookForm.getGenre());
+        serviceLibrary.saveBook(bookForm.getTitle(), bookForm.getAuthor(),bookForm.getEditor(), bookForm.getPublicationYear(), bookForm.getNbPages(), bookForm.getGenre());
         redirectAttributes.addFlashAttribute("bookForm", bookForm);
         model.addAttribute("pageTitle1", "Book");
         model.addAttribute("bookForm", bookForm);

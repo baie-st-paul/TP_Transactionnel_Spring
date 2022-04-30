@@ -35,7 +35,7 @@ public class ServiceLibrary {
         Book book;
         if(bookAlreadyExist(title)){
             book = bookRepository.getBookByTitle(title);
-            book.setNb_copies(book.getNb_copies()+1);
+            book.setNbCopies(book.getNbCopies()+1);
             bookRepository.save(book);
         }
         else{
@@ -60,7 +60,7 @@ public class ServiceLibrary {
         Cd cd;
         if(cdAlreadyExist(title)){
             cd = cdRepository.getCdByTitle(title);
-            cd.setNb_copies(cd.getNb_copies()+1);
+            cd.setNbCopies(cd.getNbCopies()+1);
             cdRepository.save(cd);
         }
         else{
@@ -81,7 +81,7 @@ public class ServiceLibrary {
         Dvd dvd;
         if(dvdAlreadyExist(title)){
             dvd = dvdRepository.getDvdByTitle(title);
-            dvd.setNb_copies(dvd.getNb_copies()+1);
+            dvd.setNbCopies(dvd.getNbCopies()+1);
             dvdRepository.save(dvd);
         }
         else{
@@ -117,7 +117,7 @@ public class ServiceLibrary {
             Client client = getClient(clientId);
             Book book = getBook(bookId);
             if(client.getTotalFees() > 0)throw new Exception("Client has fees");
-            if(book.getNb_copies()<1)throw new Exception("No books copies remainings");
+            if(book.getNbCopies()<1)throw new Exception("No books copies remainings");
             setBookRemoveCopie(book);
             Loan loan = loanRepository.save( new Loan(book, client));
             return loan.getId();
@@ -129,7 +129,7 @@ public class ServiceLibrary {
     }
 
     private void setBookRemoveCopie(Book book) {
-        book.setNb_copies(book.getNb_copies()-1);
+        book.setNbCopies(book.getNbCopies()-1);
         bookRepository.save(book);
     }
 
@@ -138,7 +138,7 @@ public class ServiceLibrary {
             Client client = getClient(clientId);
             Cd cd = getCd(cdid);
             if(client.getTotalFees() > 0)throw new Exception("Client has fees");
-            if(cd.getNb_copies()<1)throw new Exception("No cds copies remainings");
+            if(cd.getNbCopies()<1)throw new Exception("No cds copies remainings");
             setCdRemoveCopie(cd);
             Loan loan = loanRepository.save( new Loan(cd, client));
             return loan.getId();
@@ -150,7 +150,7 @@ public class ServiceLibrary {
     }
 
     private void setCdRemoveCopie(Cd cd) {
-        cd.setNb_copies(cd.getNb_copies()-1);
+        cd.setNbCopies(cd.getNbCopies()-1);
         cdRepository.save(cd);
     }
 
@@ -159,7 +159,7 @@ public class ServiceLibrary {
             Client client = getClient(clientId);
             Dvd dvd = getDvd(dvdid);
             if(client.getTotalFees() > 0)throw new Exception("Client has fees");
-            if(dvd.getNb_copies()<1)throw new Exception("No dvds copies remainings");
+            if(dvd.getNbCopies()<1)throw new Exception("No dvds copies remainings");
             setDvdRemoveCopie(dvd);
             Loan loan = loanRepository.save( new Loan(dvd, client));
             return loan.getId();
@@ -171,7 +171,7 @@ public class ServiceLibrary {
     }
 
     private void setDvdRemoveCopie(Dvd dvd) {
-        dvd.setNb_copies(dvd.getNb_copies()-1);
+        dvd.setNbCopies(dvd.getNbCopies()-1);
         dvdRepository.save(dvd);
 
     }
@@ -179,21 +179,21 @@ public class ServiceLibrary {
 
     public void returnBookFromClient(long loanId) {
         Loan loan = loanRepository.getBookLoanById(loanId);
-        loan.getDocument().setNb_copies(loan.getDocument().getNb_copies()+1);
+        loan.getDocument().setNbCopies(loan.getDocument().getNbCopies()+1);
         bookRepository.save((Book) loan.getDocument());
         loanRepository.delete(loan);
     }
 
     public void returnCdFromClient(long loanId) {
         Loan loan = loanRepository.getCdLoanById(loanId);
-        loan.getDocument().setNb_copies(loan.getDocument().getNb_copies()+1);
+        loan.getDocument().setNbCopies(loan.getDocument().getNbCopies()+1);
         cdRepository.save((Cd) loan.getDocument());
         loanRepository.delete(loan);
     }
 
     public void returnDvdFromClient(long loanId) {
         Loan loan = loanRepository.getDvdLoanById(loanId);
-        loan.getDocument().setNb_copies(loan.getDocument().getNb_copies()+1);
+        loan.getDocument().setNbCopies(loan.getDocument().getNbCopies()+1);
         dvdRepository.save((Dvd) loan.getDocument());
         loanRepository.delete(loan);
     }
