@@ -9,8 +9,6 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface DvdRepository extends JpaRepository<Dvd, Long> {
-
-    @Query(value = "SELECT d FROM Document d LEFT JOIN Dvd dvd ON dvd.id = d.id WHERE d.id = :docId")
     Dvd getDvdById(@Param("docId") long id);
 
     Dvd getDvdByTitle(String title);
