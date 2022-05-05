@@ -6,7 +6,6 @@ import com.example.tp_transactionnel_spring.models.document.Cd;
 import com.example.tp_transactionnel_spring.models.document.Dvd;
 import com.example.tp_transactionnel_spring.models.loan.Loan;
 import com.example.tp_transactionnel_spring.repository.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -16,20 +15,19 @@ import java.util.Locale;
 @Component
 public class ServiceLibrary {
 
-    @Autowired
-    private BookRepository bookRepository;
+    private final BookRepository bookRepository;
+    private final CdRepository cdRepository;
+    private final DvdRepository dvdRepository;
+    private final ClientRepository clientRepository;
+    private final LoanRepository loanRepository;
 
-    @Autowired
-    private CdRepository cdRepository;
-
-    @Autowired
-    private DvdRepository dvdRepository;
-
-    @Autowired
-    private ClientRepository clientRepository;
-
-    @Autowired
-    private LoanRepository loanRepository;
+    public ServiceLibrary(BookRepository bookRepository, CdRepository cdRepository, DvdRepository dvdRepository, ClientRepository clientRepository, LoanRepository loanRepository) {
+        this.bookRepository = bookRepository;
+        this.cdRepository = cdRepository;
+        this.dvdRepository = dvdRepository;
+        this.clientRepository = clientRepository;
+        this.loanRepository = loanRepository;
+    }
 
     public long saveBook(String title, String author, String editor, int year, int nbPages, String genre ) {
         Book book;

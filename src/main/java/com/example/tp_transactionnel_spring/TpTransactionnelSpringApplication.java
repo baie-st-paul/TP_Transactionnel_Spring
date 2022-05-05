@@ -1,6 +1,5 @@
 package com.example.tp_transactionnel_spring;
 import com.example.tp_transactionnel_spring.service.ServiceLibrary;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,8 +7,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class TpTransactionnelSpringApplication implements CommandLineRunner {
 
-    @Autowired
-    private ServiceLibrary serviceLibrary;
+
+    private final ServiceLibrary serviceLibrary;
+
+    public TpTransactionnelSpringApplication(ServiceLibrary serviceLibrary) {
+        this.serviceLibrary = serviceLibrary;
+    }
+
 
     public static void main(String[] args) {
         SpringApplication.run(TpTransactionnelSpringApplication.class, args);
@@ -37,5 +41,6 @@ public class TpTransactionnelSpringApplication implements CommandLineRunner {
         long loanId2 = serviceLibrary.loanCdToClient(cd1id, client1Id);
 
         long loanId3 = serviceLibrary.loanDvdToClient(dvd1id, client1Id);
+        System.out.println(serviceLibrary.getClient(client1Id));
     }
 }
