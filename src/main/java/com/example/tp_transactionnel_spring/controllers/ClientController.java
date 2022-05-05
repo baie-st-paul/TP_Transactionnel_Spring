@@ -3,10 +3,8 @@ package com.example.tp_transactionnel_spring.controllers;
 import com.example.tp_transactionnel_spring.DTO.DTOModels.ClientDTO;
 import com.example.tp_transactionnel_spring.DTO.Mapper;
 import com.example.tp_transactionnel_spring.service.ServiceLibrary;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,5 +25,11 @@ public class ClientController {
     @CrossOrigin(origins = "http://localhost:3000")
     public List<ClientDTO> getAllClients(){
         return serviceLibrary.findAllClient().stream().map(mapper::clientToDTO).collect(toList());
+    }
+
+    @GetMapping("/{id}")
+    @CrossOrigin(origins = "http://localhost:3000")
+    public ClientDTO getClientById(@PathVariable long id){
+        return mapper.clientToDTO(serviceLibrary.getClient(id));
     }
 }
