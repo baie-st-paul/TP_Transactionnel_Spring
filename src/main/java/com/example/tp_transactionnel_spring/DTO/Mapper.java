@@ -7,6 +7,8 @@ import com.example.tp_transactionnel_spring.models.document.Cd;
 import com.example.tp_transactionnel_spring.models.document.Dvd;
 import com.example.tp_transactionnel_spring.models.loan.Loan;
 
+import java.time.LocalDate;
+
 public class Mapper {
 
     public ClientDTO clientToDTO(Client client){
@@ -72,5 +74,16 @@ public class Mapper {
         client.setEMail(clientCreationDTO.getMail());
         client.setPostalCode(clientCreationDTO.getPostalCode());
         return client;
+    }
+
+    public Book DTOToBook(BookCreationDTO bookCreationDTO){
+        Book book = new Book();
+        book.setTitle(bookCreationDTO.getTitle());
+        book.setAuthor(bookCreationDTO.getAuthor());
+        book.setEditor(bookCreationDTO.getEditor());
+        book.setGenre(bookCreationDTO.getGenre());
+        book.setPublicationYear(LocalDate.parse(bookCreationDTO.getPublicationYear()));
+        book.setNbPages(Integer.parseInt(bookCreationDTO.getNbPages()));
+        return book;
     }
 }

@@ -1,12 +1,11 @@
 package com.example.tp_transactionnel_spring.controllers;
 
+import com.example.tp_transactionnel_spring.DTO.DTOModels.BookCreationDTO;
 import com.example.tp_transactionnel_spring.DTO.DTOModels.BookDTO;
+import com.example.tp_transactionnel_spring.DTO.DTOModels.ClientCreationDTO;
 import com.example.tp_transactionnel_spring.DTO.Mapper;
 import com.example.tp_transactionnel_spring.service.ServiceLibrary;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,5 +26,11 @@ public class BookController {
     @CrossOrigin(origins = "http://localhost:3000")
     public List<BookDTO> getAllBooks(){
         return serviceLibrary.findAllBook().stream().map(mapper::bookToDTO).collect(toList());
+    }
+
+    @PostMapping()
+    @CrossOrigin(origins = "http://localhost:3000")
+    public long createBook(@RequestBody BookCreationDTO bookCreationDTO){
+        return serviceLibrary.saveBook(mapper.DTOToBook(bookCreationDTO));
     }
 }

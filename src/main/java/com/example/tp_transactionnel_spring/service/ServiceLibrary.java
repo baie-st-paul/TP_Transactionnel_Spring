@@ -42,6 +42,18 @@ public class ServiceLibrary {
         return book.getId();
     }
 
+    public long saveBook(Book book){
+        if(bookAlreadyExist(book.getTitle())){
+            book = bookRepository.getBookByTitle(book.getTitle());
+            book.setNbCopies(book.getNbCopies()+1);
+            bookRepository.save(book);
+        }
+        else {
+            bookRepository.save(book);
+        }
+        return book.getId();
+    }
+
     private boolean bookAlreadyExist(String bookTitle){
         return bookRepository.existsByTitle(bookTitle);
     }
@@ -125,6 +137,7 @@ public class ServiceLibrary {
             return 0;
         }
     }
+
 
     private void setBookRemoveCopie(Book book) {
         book.setNbCopies(book.getNbCopies()-1);
