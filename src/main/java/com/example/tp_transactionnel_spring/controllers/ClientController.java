@@ -61,4 +61,10 @@ public class ClientController {
     public void returnBook(@RequestBody ReturningManagementDTO returningManagementDTO){
         serviceLibrary.returnBookFromClient(returningManagementDTO.getLoanId());
     }
+
+    @PostMapping("/returncd")
+    @CrossOrigin(origins = "http://localhost:3000")
+    public void returnCd(@RequestBody ReturningManagementDTO returningManagementDTO){
+        serviceLibrary.returnCdFromClient(returningManagementDTO.getLoanId());
+    }
 }
