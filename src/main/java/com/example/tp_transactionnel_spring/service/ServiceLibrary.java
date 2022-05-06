@@ -111,6 +111,17 @@ public class ServiceLibrary {
         }
         return dvd.getId();
     }
+    public long saveDvd(Dvd dvd){
+        if(dvdAlreadyExist(dvd.getTitle())){
+            dvd = dvdRepository.getDvdByTitle(dvd.getTitle());
+            dvd.setNbCopies(dvd.getNbCopies()+1);
+            dvdRepository.save(dvd);
+        }
+        else {
+            dvdRepository.save(dvd);
+        }
+        return dvd.getId();
+    }
 
     private boolean dvdAlreadyExist(String dvdTitle) {
         return dvdRepository.existsByTitle(dvdTitle);

@@ -1,6 +1,10 @@
 package com.example.tp_transactionnel_spring.DTO;
 
-import com.example.tp_transactionnel_spring.DTO.DTOModels.*;
+import com.example.tp_transactionnel_spring.DTO.DTOModels.getDTO.BookCreationDTO;
+import com.example.tp_transactionnel_spring.DTO.DTOModels.getDTO.CdCreationDTO;
+import com.example.tp_transactionnel_spring.DTO.DTOModels.getDTO.ClientCreationDTO;
+import com.example.tp_transactionnel_spring.DTO.DTOModels.getDTO.DvdCreationDTO;
+import com.example.tp_transactionnel_spring.DTO.DTOModels.postDTO.*;
 import com.example.tp_transactionnel_spring.models.client.Client;
 import com.example.tp_transactionnel_spring.models.document.Book;
 import com.example.tp_transactionnel_spring.models.document.Cd;
@@ -96,5 +100,16 @@ public class Mapper {
         cd.setPublicationYear(LocalDate.parse(cdCreationDTO.getPublicationYear()));
         cd.setNbCopies(Integer.parseInt(cdCreationDTO.getNbScenes()));
         return cd;
+    }
+
+    public Dvd DTOToDvd(DvdCreationDTO dvdCreationDTO){
+        Dvd dvd = new Dvd();
+        dvd.setTitle(dvdCreationDTO.getTitle());
+        dvd.setAuthor(dvdCreationDTO.getAuthor());
+        dvd.setEditor(dvdCreationDTO.getEditor());
+        dvd.setGenre(dvdCreationDTO.getGenre());
+        dvd.setPublicationYear(LocalDate.parse(dvdCreationDTO.getPublicationYear()));
+        dvd.setNbCopies(Integer.parseInt(dvdCreationDTO.getNbScenes()));
+        return dvd;
     }
 }

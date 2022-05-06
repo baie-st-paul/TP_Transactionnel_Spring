@@ -1,4 +1,4 @@
-package com.example.tp_transactionnel_spring.DTO.DTOModels;
+package com.example.tp_transactionnel_spring.DTO.DTOModels.getDTO;
 import lombok.Data;
 @Data
 public class ClientCreationDTO {

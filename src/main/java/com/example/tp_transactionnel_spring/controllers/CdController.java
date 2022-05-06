@@ -1,7 +1,6 @@
 package com.example.tp_transactionnel_spring.controllers;
-import com.example.tp_transactionnel_spring.DTO.DTOModels.BookCreationDTO;
-import com.example.tp_transactionnel_spring.DTO.DTOModels.CdCreationDTO;
-import com.example.tp_transactionnel_spring.DTO.DTOModels.CdDTO;
+import com.example.tp_transactionnel_spring.DTO.DTOModels.getDTO.CdCreationDTO;
+import com.example.tp_transactionnel_spring.DTO.DTOModels.postDTO.CdDTO;
 import com.example.tp_transactionnel_spring.DTO.Mapper;
 import com.example.tp_transactionnel_spring.service.ServiceLibrary;
 import org.springframework.web.bind.annotation.*;

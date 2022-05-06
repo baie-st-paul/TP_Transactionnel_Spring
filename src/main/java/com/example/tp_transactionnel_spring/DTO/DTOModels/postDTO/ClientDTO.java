@@ -1,4 +1,4 @@
-package com.example.tp_transactionnel_spring.DTO.DTOModels;
+package com.example.tp_transactionnel_spring.DTO.DTOModels.postDTO;
 import lombok.Data;
 import java.util.ArrayList;
 import java.util.List;

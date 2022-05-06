@@ -1,6 +1,6 @@
 package com.example.tp_transactionnel_spring.controllers;
-import com.example.tp_transactionnel_spring.DTO.DTOModels.ClientCreationDTO;
-import com.example.tp_transactionnel_spring.DTO.DTOModels.ClientDTO;
+import com.example.tp_transactionnel_spring.DTO.DTOModels.getDTO.ClientCreationDTO;
+import com.example.tp_transactionnel_spring.DTO.DTOModels.postDTO.ClientDTO;
 import com.example.tp_transactionnel_spring.DTO.Mapper;
 import com.example.tp_transactionnel_spring.service.ServiceLibrary;
 import org.springframework.web.bind.annotation.*;
