@@ -256,4 +256,8 @@ public class ServiceLibrary {
         return cdRepository.findAll();
     }
 
+    public List<Dvd> findAllDvd(){
+        return dvdRepository.findAll();
+    }
+
 }
