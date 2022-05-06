@@ -252,4 +252,8 @@ public class ServiceLibrary {
         return clientRepository.findAll();
     }
 
+    public List<Cd> findAllCd(){
+        return cdRepository.findAll();
+    }
+
 }

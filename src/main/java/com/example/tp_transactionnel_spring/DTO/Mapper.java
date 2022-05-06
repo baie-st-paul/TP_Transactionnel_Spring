@@ -1,10 +1,12 @@
 package com.example.tp_transactionnel_spring.DTO;
 
 import com.example.tp_transactionnel_spring.DTO.DTOModels.BookDTO;
+import com.example.tp_transactionnel_spring.DTO.DTOModels.CdDTO;
 import com.example.tp_transactionnel_spring.DTO.DTOModels.ClientDTO;
 import com.example.tp_transactionnel_spring.DTO.DTOModels.DocLoanDTO;
 import com.example.tp_transactionnel_spring.models.client.Client;
 import com.example.tp_transactionnel_spring.models.document.Book;
+import com.example.tp_transactionnel_spring.models.document.Cd;
 import com.example.tp_transactionnel_spring.models.loan.Loan;
 
 public class Mapper {
@@ -36,5 +38,18 @@ public class Mapper {
         bookDTO.setNbCopies(book.getNbCopies());
         bookDTO.setNbPages (String.valueOf(book.getNbPages()));
         return bookDTO;
+    }
+
+    public CdDTO cdToDTO(Cd cd){
+        CdDTO cdDTO = new CdDTO();
+        cdDTO.setId(String.valueOf(cd.getId()));
+        cdDTO.setTitle(cd.getTitle());
+        cdDTO.setAuthor(cd.getAuthor());
+        cdDTO.setEditor(cd.getEditor());
+        cdDTO.setPublicationYear(cd.getPublicationYear().toString());
+        cdDTO.setGenre(cd.getGenre());
+        cdDTO.setNbCopies(cd.getNbCopies());
+        cdDTO.setNbScenes(String.valueOf(cd.getNbScenes()));
+        return cdDTO;
     }
 }

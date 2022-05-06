@@ -12,9 +12,9 @@ import static java.util.stream.Collectors.toList;
 @RestController
 @RequestMapping("/clients")
 public class ClientController {
-
     private final ServiceLibrary serviceLibrary;
     private final Mapper mapper;
+
     public ClientController(ServiceLibrary serviceLibrary) {
         this.serviceLibrary = serviceLibrary;
         this.mapper = new Mapper();
