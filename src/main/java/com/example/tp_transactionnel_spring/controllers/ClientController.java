@@ -1,7 +1,8 @@
 package com.example.tp_transactionnel_spring.controllers;
 import com.example.tp_transactionnel_spring.DTO.DTOModels.postDTO.ClientCreationDTO;
 import com.example.tp_transactionnel_spring.DTO.DTOModels.getDTO.ClientDTO;
-import com.example.tp_transactionnel_spring.DTO.DTOModels.postDTO.LoanManagementDTO;
+import com.example.tp_transactionnel_spring.DTO.DTOModels.postDTO.LendingManagementDTO;
+import com.example.tp_transactionnel_spring.DTO.DTOModels.postDTO.ReturningManagementDTO;
 import com.example.tp_transactionnel_spring.DTO.Mapper;
 import com.example.tp_transactionnel_spring.service.ServiceLibrary;
 import org.springframework.web.bind.annotation.*;
@@ -39,21 +40,25 @@ public class ClientController {
 
     @PostMapping("/loanbook")
     @CrossOrigin(origins = "http://localhost:3000")
-    public long loanBook(@RequestBody LoanManagementDTO loanManagementDTO){
-        return serviceLibrary.loanBookToCLient(loanManagementDTO.getDocumentId(), loanManagementDTO.getClientId());
+    public long loanBook(@RequestBody LendingManagementDTO lendingManagementDTO){
+        return serviceLibrary.loanBookToCLient(lendingManagementDTO.getDocumentId(), lendingManagementDTO.getClientId());
     }
 
     @PostMapping("/loancd")
     @CrossOrigin(origins = "http://localhost:3000")
-    public long loanCd(@RequestBody LoanManagementDTO loanManagementDTO){
-        return serviceLibrary.loanCdToClient(loanManagementDTO.getDocumentId(), loanManagementDTO.getClientId());
+    public long loanCd(@RequestBody LendingManagementDTO lendingManagementDTO){
+        return serviceLibrary.loanCdToClient(lendingManagementDTO.getDocumentId(), lendingManagementDTO.getClientId());
     }
 
     @PostMapping("/loandvd")
     @CrossOrigin(origins = "http://localhost:3000")
-    public long loanDvd(@RequestBody LoanManagementDTO loanManagementDTO){
-        return serviceLibrary.loanDvdToClient(loanManagementDTO.getDocumentId(), loanManagementDTO.getClientId());
+    public long loanDvd(@RequestBody LendingManagementDTO lendingManagementDTO){
+        return serviceLibrary.loanDvdToClient(lendingManagementDTO.getDocumentId(), lendingManagementDTO.getClientId());
     }
 
-
+    @PostMapping("/returnbook")
+    @CrossOrigin(origins = "http://localhost:3000")
+    public void returnBook(@RequestBody ReturningManagementDTO returningManagementDTO){
+        serviceLibrary.returnBookFromClient(returningManagementDTO.getLoanId());
+    }
 }
