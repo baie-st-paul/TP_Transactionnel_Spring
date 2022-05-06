@@ -48,4 +48,12 @@ public class ClientController {
     public long loanCd(@RequestBody LoanManagementDTO loanManagementDTO){
         return serviceLibrary.loanCdToClient(loanManagementDTO.getDocumentId(), loanManagementDTO.getClientId());
     }
+
+    @PostMapping("/loandvd")
+    @CrossOrigin(origins = "http://localhost:3000")
+    public long loanDvd(@RequestBody LoanManagementDTO loanManagementDTO){
+        return serviceLibrary.loanDvdToClient(loanManagementDTO.getDocumentId(), loanManagementDTO.getClientId());
+    }
+
+
 }
