@@ -86,4 +86,15 @@ public class Mapper {
         book.setNbPages(Integer.parseInt(bookCreationDTO.getNbPages()));
         return book;
     }
+
+    public Cd DTOToCd(CdCreationDTO cdCreationDTO){
+        Cd cd = new Cd();
+        cd.setTitle(cdCreationDTO.getTitle());
+        cd.setAuthor(cdCreationDTO.getAuthor());
+        cd.setEditor(cdCreationDTO.getEditor());
+        cd.setGenre(cdCreationDTO.getGenre());
+        cd.setPublicationYear(LocalDate.parse(cdCreationDTO.getPublicationYear()));
+        cd.setNbCopies(Integer.parseInt(cdCreationDTO.getNbScenes()));
+        return cd;
+    }
 }

@@ -1,13 +1,10 @@
 package com.example.tp_transactionnel_spring.controllers;
-
 import com.example.tp_transactionnel_spring.DTO.DTOModels.ClientCreationDTO;
 import com.example.tp_transactionnel_spring.DTO.DTOModels.ClientDTO;
 import com.example.tp_transactionnel_spring.DTO.Mapper;
 import com.example.tp_transactionnel_spring.service.ServiceLibrary;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
-
 import static java.util.stream.Collectors.toList;
 
 @RestController

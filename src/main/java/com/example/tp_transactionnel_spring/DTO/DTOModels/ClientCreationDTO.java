@@ -1,7 +1,5 @@
 package com.example.tp_transactionnel_spring.DTO.DTOModels;
-
 import lombok.Data;
-
 @Data
 public class ClientCreationDTO {
     private String firstName;

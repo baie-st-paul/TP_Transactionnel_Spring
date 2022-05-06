@@ -1,15 +1,12 @@
 package com.example.tp_transactionnel_spring.controllers;
-
+import com.example.tp_transactionnel_spring.DTO.DTOModels.BookCreationDTO;
+import com.example.tp_transactionnel_spring.DTO.DTOModels.CdCreationDTO;
 import com.example.tp_transactionnel_spring.DTO.DTOModels.CdDTO;
 import com.example.tp_transactionnel_spring.DTO.Mapper;
 import com.example.tp_transactionnel_spring.service.ServiceLibrary;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
 import static java.util.stream.Collectors.toList;
 
 @RestController
@@ -26,5 +23,11 @@ public class CdController {
     @CrossOrigin(origins = "http://localhost:3000")
     public List<CdDTO> getAllCds(){
         return serviceLibrary.findAllCd().stream().map(mapper::cdToDTO).collect(toList());
+    }
+
+    @PostMapping()
+    @CrossOrigin(origins = "http://localhost:3000")
+    public long createCd(@RequestBody CdCreationDTO cdCreationDTO){
+        return serviceLibrary.saveCd(mapper.DTOToCd(cdCreationDTO));
     }
 }

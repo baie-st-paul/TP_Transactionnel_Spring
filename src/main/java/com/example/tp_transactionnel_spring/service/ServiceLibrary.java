@@ -79,6 +79,18 @@ public class ServiceLibrary {
         return cd.getId();
     }
 
+    public long saveCd(Cd cd){
+        if(cdAlreadyExist(cd.getTitle())){
+            cd = cdRepository.getCdByTitle(cd.getTitle());
+            cd.setNbCopies(cd.getNbCopies()+1);
+            cdRepository.save(cd);
+        }
+        else {
+            cdRepository.save(cd);
+        }
+        return cd.getId();
+    }
+
     private boolean cdAlreadyExist(String cdTitle) {
         return cdRepository.existsByTitle(cdTitle);
     }
