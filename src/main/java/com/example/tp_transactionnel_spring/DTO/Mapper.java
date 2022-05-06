@@ -1,10 +1,10 @@
 package com.example.tp_transactionnel_spring.DTO;
 
-import com.example.tp_transactionnel_spring.DTO.DTOModels.getDTO.BookCreationDTO;
-import com.example.tp_transactionnel_spring.DTO.DTOModels.getDTO.CdCreationDTO;
-import com.example.tp_transactionnel_spring.DTO.DTOModels.getDTO.ClientCreationDTO;
-import com.example.tp_transactionnel_spring.DTO.DTOModels.getDTO.DvdCreationDTO;
-import com.example.tp_transactionnel_spring.DTO.DTOModels.postDTO.*;
+import com.example.tp_transactionnel_spring.DTO.DTOModels.getDTO.*;
+import com.example.tp_transactionnel_spring.DTO.DTOModels.postDTO.BookCreationDTO;
+import com.example.tp_transactionnel_spring.DTO.DTOModels.postDTO.CdCreationDTO;
+import com.example.tp_transactionnel_spring.DTO.DTOModels.postDTO.ClientCreationDTO;
+import com.example.tp_transactionnel_spring.DTO.DTOModels.postDTO.DvdCreationDTO;
 import com.example.tp_transactionnel_spring.models.client.Client;
 import com.example.tp_transactionnel_spring.models.document.Book;
 import com.example.tp_transactionnel_spring.models.document.Cd;

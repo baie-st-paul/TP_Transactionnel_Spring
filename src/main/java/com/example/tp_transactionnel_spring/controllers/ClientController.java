@@ -1,6 +1,7 @@
 package com.example.tp_transactionnel_spring.controllers;
-import com.example.tp_transactionnel_spring.DTO.DTOModels.getDTO.ClientCreationDTO;
-import com.example.tp_transactionnel_spring.DTO.DTOModels.postDTO.ClientDTO;
+import com.example.tp_transactionnel_spring.DTO.DTOModels.postDTO.ClientCreationDTO;
+import com.example.tp_transactionnel_spring.DTO.DTOModels.getDTO.ClientDTO;
+import com.example.tp_transactionnel_spring.DTO.DTOModels.postDTO.LoanManagementDTO;
 import com.example.tp_transactionnel_spring.DTO.Mapper;
 import com.example.tp_transactionnel_spring.service.ServiceLibrary;
 import org.springframework.web.bind.annotation.*;
@@ -35,4 +36,11 @@ public class ClientController {
     public long createClient(@RequestBody ClientCreationDTO clientCreationDTO){
         return serviceLibrary.saveClient(mapper.DTOToClient(clientCreationDTO));
     }
+
+    @PostMapping("/loanbook")
+    @CrossOrigin(origins = "http://localhost:3000")
+    public long loanBook(@RequestBody LoanManagementDTO loanManagementDTO){
+        return serviceLibrary.loanBookToCLient(loanManagementDTO.getDocumentId(), loanManagementDTO.getClientId());
+    }
+
 }
