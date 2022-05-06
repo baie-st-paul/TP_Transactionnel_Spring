@@ -73,4 +73,5 @@ public class ClientController {
     public void returnDvd(@RequestBody ReturningManagementDTO returningManagementDTO){
         serviceLibrary.returnDvdFromClient(returningManagementDTO.getLoanId());
     }
+
 }

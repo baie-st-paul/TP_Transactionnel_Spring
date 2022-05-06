@@ -87,7 +87,7 @@ public class Mapper {
         book.setEditor(bookCreationDTO.getEditor());
         book.setGenre(bookCreationDTO.getGenre());
         book.setPublicationYear(LocalDate.parse(bookCreationDTO.getPublicationYear()));
-        book.setNbPages(Integer.parseInt(bookCreationDTO.getNbPages()));
+        book.setNbPages(bookCreationDTO.getNbPages());
         return book;
     }
 
@@ -98,7 +98,7 @@ public class Mapper {
         cd.setEditor(cdCreationDTO.getEditor());
         cd.setGenre(cdCreationDTO.getGenre());
         cd.setPublicationYear(LocalDate.parse(cdCreationDTO.getPublicationYear()));
-        cd.setNbCopies(Integer.parseInt(cdCreationDTO.getNbScenes()));
+        cd.setNbCopies(cdCreationDTO.getNbScenes());
         return cd;
     }
 
@@ -109,7 +109,7 @@ public class Mapper {
         dvd.setEditor(dvdCreationDTO.getEditor());
         dvd.setGenre(dvdCreationDTO.getGenre());
         dvd.setPublicationYear(LocalDate.parse(dvdCreationDTO.getPublicationYear()));
-        dvd.setNbCopies(Integer.parseInt(dvdCreationDTO.getNbScenes()));
+        dvd.setNbCopies(dvdCreationDTO.getNbScenes());
         return dvd;
     }
 }

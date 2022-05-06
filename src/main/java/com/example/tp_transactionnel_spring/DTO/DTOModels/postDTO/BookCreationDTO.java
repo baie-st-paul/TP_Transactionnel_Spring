@@ -8,6 +8,6 @@ public class BookCreationDTO {
     private String editor;
     private String publicationYear;
     private String genre;
-    private String nbPages;
+    private int nbPages;
 
 }
