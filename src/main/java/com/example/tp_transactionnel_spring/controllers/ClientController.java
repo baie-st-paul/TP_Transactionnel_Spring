@@ -1,5 +1,6 @@
 package com.example.tp_transactionnel_spring.controllers;
 
+import com.example.tp_transactionnel_spring.DTO.DTOModels.ClientCreationDTO;
 import com.example.tp_transactionnel_spring.DTO.DTOModels.ClientDTO;
 import com.example.tp_transactionnel_spring.DTO.Mapper;
 import com.example.tp_transactionnel_spring.service.ServiceLibrary;
@@ -30,5 +31,11 @@ public class ClientController {
     @CrossOrigin(origins = "http://localhost:3000")
     public ClientDTO getClientById(@PathVariable long id){
         return mapper.clientToDTO(serviceLibrary.getClient(id));
+    }
+
+    @PostMapping()
+    @CrossOrigin(origins = "http://localhost:3000")
+    public long createClient(@RequestBody ClientCreationDTO clientCreationDTO){
+        return serviceLibrary.saveClient(mapper.DTOToClient(clientCreationDTO));
     }
 }

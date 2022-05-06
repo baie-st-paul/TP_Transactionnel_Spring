@@ -63,4 +63,14 @@ public class Mapper {
         dvdDTO.setNbScenes(String.valueOf(dvd.getNbScenes()));
         return dvdDTO;
     }
+
+    public Client DTOToClient(ClientCreationDTO clientCreationDTO){
+        Client client = new Client();
+        client.setFirstName(clientCreationDTO.getFirstName());
+        client.setLastName(clientCreationDTO.getLastName());
+        client.setAddress(clientCreationDTO.getAddress());
+        client.setEMail(clientCreationDTO.getMail());
+        client.setPostalCode(clientCreationDTO.getPostalCode());
+        return client;
+    }
 }
