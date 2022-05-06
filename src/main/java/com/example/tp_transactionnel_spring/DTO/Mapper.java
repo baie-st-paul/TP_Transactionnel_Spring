@@ -1,8 +1,10 @@
 package com.example.tp_transactionnel_spring.DTO;
 
+import com.example.tp_transactionnel_spring.DTO.DTOModels.BookDTO;
 import com.example.tp_transactionnel_spring.DTO.DTOModels.ClientDTO;
 import com.example.tp_transactionnel_spring.DTO.DTOModels.DocLoanDTO;
 import com.example.tp_transactionnel_spring.models.client.Client;
+import com.example.tp_transactionnel_spring.models.document.Book;
 import com.example.tp_transactionnel_spring.models.loan.Loan;
 
 public class Mapper {
@@ -23,5 +25,16 @@ public class Mapper {
         return clientDTO;
     }
 
-
+    public BookDTO bookToDTO(Book book){
+        BookDTO bookDTO = new BookDTO();
+        bookDTO.setId(String.valueOf(book.getId()));
+        bookDTO.setTitle(book.getTitle());
+        bookDTO.setAuthor(book.getAuthor());
+        bookDTO.setEditor(book.getEditor());
+        bookDTO.setPublicationYear(book.getPublicationYear().toString());
+        bookDTO.setGenre(book.getGenre());
+        bookDTO.setNbCopies(book.getNbCopies());
+        bookDTO.setNbPages (String.valueOf(book.getNbPages()));
+        return bookDTO;
+    }
 }
