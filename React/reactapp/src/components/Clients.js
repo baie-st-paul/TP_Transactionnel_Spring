@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Client from './Client';
 
 
-const Clients = () => {
+const Clients = ({onSelectClient}) => {
     const[clients, setClients] = useState([])
 
     useEffect(() => {
@@ -24,6 +24,7 @@ const Clients = () => {
             {clients.map((client) =>(
                 <Client key={client.id}
                 client={client}
+                onSelectClient={onSelectClient}
                  />
             ))}
         </>

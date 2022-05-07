@@ -10,7 +10,7 @@ function App() {
       <div className='container'>
         <Routes>
           <Route path='/' element={<LandingPage/>} />
-          <Route path='/clients' element={<PageClient/>} />
+          <Route path='/clients/*' element={<PageClient/>} />
         </Routes>
         
 
