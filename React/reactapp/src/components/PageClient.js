@@ -1,8 +1,9 @@
 import React from "react";
+import Clients from "./Clients";
 
 const PageClient = () => {
     return(
-        <h1>Yo</h1>
+        <Clients/>
     )
 
 }
