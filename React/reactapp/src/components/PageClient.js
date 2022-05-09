@@ -2,7 +2,6 @@ import React from "react";
 import {useState} from 'react'
 import Clients from "./Clients";
 import ClientDetail from "./ClientDetail";
-import { bool } from "prop-types";
 
 const PageClient = () => {
     const [showClientDetail, setShowClientDetail] = useState(false)

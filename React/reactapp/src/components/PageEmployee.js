@@ -1,30 +1,21 @@
 import React from "react";
 import {useState} from 'react'
+import ClientForm from "./ClientForm"
+import Button from "./Button";
 
 const PageEmployee = () => {
-    const [showListSelection, setshowListSelection] = useState(true)
-    const [showListClients, setshowListClients] = useState(false)
+    const [showClientForm, setShowClientForm] = useState(false);
 
     return(
         <>
-            { showListSelection && <>
-            <div className="box" >
-                <h3>List of employees</h3> 
-            </div>    
-            <div className="box" >
-                <h3>List of Clients</h3> 
-            </div> </>
+            <div>
+                <Button color="green" text="Show client form" onClick={setShowClientForm} />
+            </div>
+            {
+                showClientForm && 
+                <ClientForm/>
             }
-            { !showListSelection && <>
-                {
-                    showListClients  && <>
-                    
-                    </>
-                }
-            </>
-            }
-         </>
-           
+        </>
     )
 }
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Client from './Client';
 
 
-const Clients = ({onSelectClient, privilegeUser}) => {
+const Clients = ({onSelectClient}) => {
     const[clients, setClients] = useState([])
 
     useEffect(() => {
