@@ -1,8 +1,8 @@
 import React from 'react';
 import Loan from './Loan';
 import { useState } from 'react';
-import Documents from './Documents';
-import Button from './Button';
+import Documents from '../documentsComponents/Documents';
+import Button from '../miscComponents/Button';
 const ClientDetail = ({client}) => {
     const [showListSelection, setshowListSelection] = useState(false)
 

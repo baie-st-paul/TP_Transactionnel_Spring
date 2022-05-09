@@ -1,8 +1,8 @@
 import React from "react";
 import {useState} from 'react'
-import ClientForm from "./ClientForm"
-import Button from "./Button";
-import DocumentForm from "./DocumentForm";
+import ClientForm from "./clientsComponents/ClientForm"
+import Button from "./miscComponents/Button";
+import DocumentForm from "./documentsComponents/DocumentForm";
 
 const PageEmployee = () => {
     const [showClientForm, setShowClientForm] = useState(false);

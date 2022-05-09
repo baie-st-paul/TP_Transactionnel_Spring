@@ -1,7 +1,7 @@
 import React from "react";
 import {useState} from 'react'
-import Clients from "./Clients";
-import ClientDetail from "./ClientDetail";
+import Clients from "./clientsComponents/Clients";
+import ClientDetail from "./clientsComponents/ClientDetail";
 
 const PageClient = () => {
     const [showClientDetail, setShowClientDetail] = useState(false)
