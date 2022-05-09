@@ -5,6 +5,7 @@ import lombok.Data;
 public class DocLoanDTO {
     private String id;
     private String title;
+    private String docType;
     private String returnDate;
 
 

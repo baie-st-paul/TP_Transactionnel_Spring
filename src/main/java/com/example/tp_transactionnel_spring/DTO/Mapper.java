@@ -25,6 +25,7 @@ public class Mapper {
             DocLoanDTO docLoanDTO = new DocLoanDTO();
             docLoanDTO.setId(String.valueOf(loan.getId()));
             docLoanDTO.setTitle(loan.getDocument().getTitle());
+            docLoanDTO.setDocType(loan.getDocument().getClass().getSimpleName());
             docLoanDTO.setReturnDate(loan.getReturnDate().toString());
             clientDTO.getDocLoanDTOList().add(docLoanDTO);
         }
