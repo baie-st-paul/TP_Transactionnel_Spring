@@ -6,8 +6,47 @@ import Button from './Button';
 const ClientDetail = ({client}) => {
     const [showListSelection, setshowListSelection] = useState(false)
 
+    const returnDoc = async (loan) => {
+        
+        if(loan.docType == "Book"){
+            const res = await fetch('http://localhost:8082/clients/returnbook',
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({loanId:loan.id})
+            }
+            )
+        }
 
-    
+        if(loan.docType == "Cd"){
+            const res = await fetch('http://localhost:8082/clients/returncd',
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({loanId:loan.id})
+            }
+            )
+        }
+        if(loan.docType == "Dvd"){
+            const res = await fetch('http://localhost:8082/clients/returndvd',
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({loanId:loan.id})
+            }
+            )
+        }
+
+        
+
+    }
+
     return (
     <>  
         <Button color='green' text='show Documents' onClick={setshowListSelection}/>
@@ -18,7 +57,9 @@ const ClientDetail = ({client}) => {
         
             {client.docLoanDTOList.map((loan) =>(
                 <Loan key={loan.id}
-                loan={loan}/>
+                loan={loan}
+                onReturnLoan={returnDoc}
+                />
             ))}
 
         { showListSelection &&  
