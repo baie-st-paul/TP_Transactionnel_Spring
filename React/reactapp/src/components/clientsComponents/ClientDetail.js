@@ -8,42 +8,42 @@ const ClientDetail = ({client}) => {
 
     const returnDoc = async (loan) => {
         
-        if(loan.docType == "Book"){
-            const res = await fetch('http://localhost:8082/clients/returnbook',
-            {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({loanId:loan.id})
-            }
-            )
+        if(loan.docType === "Book"){
+            await fetch('http://localhost:8082/clients/returnbook',
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({loanId:loan.id})
+                }
+            );
         }
 
-        if(loan.docType == "Cd"){
-            const res = await fetch('http://localhost:8082/clients/returncd',
-            {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({loanId:loan.id})
-            }
-            )
+        if(loan.docType === "Cd"){
+            await fetch('http://localhost:8082/clients/returncd',
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({loanId:loan.id})
+                }
+            );
         }
-        if(loan.docType == "Dvd"){
-            const res = await fetch('http://localhost:8082/clients/returndvd',
-            {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({loanId:loan.id})
-            }
-            )
+        if(loan.docType === "Dvd"){
+            await fetch('http://localhost:8082/clients/returndvd',
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({loanId:loan.id})
+                }
+            );
         }
 
-        
+
 
     }
 

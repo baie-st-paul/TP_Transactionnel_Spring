@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, {useEffect, useState} from 'react';
 import Book from './Book'
 import Cd from './Cd'
 import Dvd from './Dvd'
+
 const Documents = ({isEmployee, client}) => {
     const [Books, setBooks] = useState([])
     const [Cds, setCds] = useState([])
@@ -27,68 +28,53 @@ const Documents = ({isEmployee, client}) => {
 
       const fetchBooks = async () => {
         const res = await fetch('http://localhost:8082/books')
-        const data = await res.json()
-        return data
+          return await res.json()
       }
 
       const fetchCds = async () => {
         const res = await fetch('http://localhost:8082/cds')
-        const data = await res.json()
-        return data
+          return await res.json()
       }
 
       const fetchDvds = async () => {
         const res = await fetch('http://localhost:8082/dvds')
-        const data = await res.json()
-        return data
+          return await res.json()
       }
 
       const addBook = async (book) => {
-        
-
-        const res = await fetch('http://localhost:8082/clients/loanbook',
-        {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({clientId:client.id, documentId:book.id})
-        }
-        )
-        
-        
+          await fetch('http://localhost:8082/clients/loanbook',
+              {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify({clientId:client.id, documentId:book.id})
+              }
+          );
       }
 
-      const addCd = async (cd) => {
-        
-
-        const res = await fetch('http://localhost:8082/clients/loancd',
-        {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({clientId:client.id, documentId:cd.id})
-        }
-        )
-        
-        
-      }
-      const addDvd = async (dvd) => {
-        
-
-        const res = await fetch('http://localhost:8082/clients/loandvd',
-        {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({clientId:client.id, documentId:dvd.id})
-        }
-        )
-        
-        
-      }
+    const addCd = async (cd) => {
+        await fetch('http://localhost:8082/clients/loancd',
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({clientId:client.id, documentId:cd.id})
+            }
+        );
+    }
+    const addDvd = async (dvd) => {
+        await fetch('http://localhost:8082/clients/loandvd',
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({clientId:client.id, documentId:dvd.id})
+            }
+        );
+    }
     return(
         <>
             { !isEmployee &&

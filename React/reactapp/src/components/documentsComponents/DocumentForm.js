@@ -11,50 +11,50 @@ const DocumentForm = ({type}) => {
     const [nb, setNb] = useState(0)
     
     const createBook = async (doc) => {
-        const res = await fetch('http://localhost:8082/books',
-        {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({title: doc.title, author: doc.author, editor: doc.editor, publicationYear: doc.publicationYear, genre: doc.genre, nbPages: doc.nb})
-        }
-        )
+        await fetch('http://localhost:8082/books',
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({title: doc.title, author: doc.author, editor: doc.editor, publicationYear: doc.publicationYear, genre: doc.genre, nbPages: doc.nb})
+            }
+        );
     }
 
     const createCd = async (doc) => {
-        const res = await fetch('http://localhost:8082/cds',
-        {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({title: doc.title, author: doc.author, editor: doc.editor, publicationYear: doc.publicationYear, genre: doc.genre, nbScenes: doc.nb})
-        }
-        )
+        await fetch('http://localhost:8082/cds',
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({title: doc.title, author: doc.author, editor: doc.editor, publicationYear: doc.publicationYear, genre: doc.genre, nbScenes: doc.nb})
+            }
+        );
     }
 
     const createDvd = async (doc) => {
-        const res = await fetch('http://localhost:8082/dvds',
-        {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({title: doc.title, author: doc.author, editor: doc.editor, publicationYear: doc.publicationYear, genre: doc.genre, nbScenes: doc.nb})
-        }
-        )
+        await fetch('http://localhost:8082/dvds',
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({title: doc.title, author: doc.author, editor: doc.editor, publicationYear: doc.publicationYear, genre: doc.genre, nbScenes: doc.nb})
+            }
+        );
     }
 
     const onSubmit = (e) => {
         e.preventDefault()
-        if(type == 'book'){
+        if(type === 'book'){
             createBook({title, author, editor, publicationYear, genre, nb})
         }
-        if(type == 'cd'){
+        if(type === 'cd'){
             createCd({title, author, editor, publicationYear, genre, nb})
         }
-        if(type == 'dvd'){
+        if(type === 'dvd'){
             createDvd({title, author, editor, publicationYear, genre, nb})
         }
         

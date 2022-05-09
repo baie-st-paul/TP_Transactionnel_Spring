@@ -11,19 +11,19 @@ const ClientForm = () => {
 
     
     const createClient = async (client) => {
-        const res = await fetch('http://localhost:8082/clients',
-        {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({firstName:client.firstName,
-                                  lastName:client.lastName,
-                                  address:client.address ,
-                                  mail:client.email,
-                                  postalCode:client.postalCode})
-        }
-        )
+        await fetch('http://localhost:8082/clients',
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({firstName:client.firstName,
+                    lastName:client.lastName,
+                    address:client.address ,
+                    mail:client.email,
+                    postalCode:client.postalCode})
+            }
+        );
     }
 
     const onSubmit = (e) => {

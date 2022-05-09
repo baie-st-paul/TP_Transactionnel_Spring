@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useEffect, useState} from 'react';
 import Client from './Client';
 
 
@@ -15,8 +15,7 @@ const Clients = ({onSelectClient}) => {
 
       const fetchClients = async () => {
         const res = await fetch('http://localhost:8082/clients')
-        const data = await res.json()
-        return data
+          return await res.json()
       }
 
     return(
